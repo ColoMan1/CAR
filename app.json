@@ -1,0 +1,39 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/inquire/inquire",
+    "pages/my/my",
+    "pages/pay/pay"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "预约订票",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "backgroundColor": "white",
+    "selectedColor": "#FDA836",
+    "borderStyle": "#FBF4DC",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "预约订票",
+        "iconPath": "img/票.png",
+        "selectedIconPath": "img/票1.png"
+      },
+      {
+        "pagePath": "pages/inquire/inquire",
+        "text": "班次查询",
+        "iconPath": "img/记录.png",
+        "selectedIconPath": "img/记录1.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "img/人.png",
+        "selectedIconPath": "img/人1.png"
+      }
+    ]
+  }
+}

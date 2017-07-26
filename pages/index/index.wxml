@@ -1,0 +1,64 @@
+<view class="index_bigbox">
+  <view class="top_border"></view>
+  <view class="banci_center">
+    <view class="banci_left">
+      <view class="banci_left_top">
+        出发站
+      </view>
+      <view class="banci_left_bottom">
+        <picker bindchange="bindCitycarChange_left" value="{{city_car_leftIndex}}" range="{{city_car_left}}">
+          <view class="">{{city_car_left[city_car_leftIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="banci_right">
+        <view class="banci_right_top">
+          终点站
+        </view>
+        <view class="banci_right_bottom">
+          <picker bindchange="bindCitycarChange_right" value="{{city_car_rightIndex}}" range="{{city_car_right}}">
+            <view class="">{{city_car_right[city_car_rightIndex]}}</view>
+          </picker>
+        </view>
+    </view>
+  </view>
+</view>
+
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+          <view class="weui-label">乘车时间</view>
+      </view>
+      <view class="weui-cell__bd">
+          <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+              <view class="weui-input" style="text-align:right;color:#ccc;">{{date}}</view>
+          </picker>
+      </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+          <view class="weui-label">支付方式</view>
+      </view>
+    <view class="weui-cell__bd">
+        <picker bindchange="bindAccountChange" value="{{accountIndex}}" range="{{accounts}}">
+            <view class="weui-input" style="text-align:right;color:#ccc;">{{accounts[accountIndex]}}</view>
+        </picker>
+    </view>
+  </view>
+   <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+          <view class="weui-label">乘车费用</view>
+      </view>
+      <view class="weui-cell__bd">
+          <view class="weui-input" style="text-align:right;color:#ccc;">
+            <text style="font-size:70rpx;color:black;">{{price}}</text>元
+          </view>
+      </view>
+  </view>
+</view>
+
+ <view class="page__bd page__bd_spacing" style="padding:50rpx 30rpx;">
+    <navigator url="../pay/pay">
+      <button class="weui-btn" type="primary" style="background-color:#FFCE39;">立即预约</button>
+    </navigator>
+</view>

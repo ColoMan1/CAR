@@ -1,0 +1,23 @@
+<view class="pay_top">
+  <view class="pay_top_top">
+    {{price}}元
+  </view>
+  <view class="banci_center">
+    <view class="banci_left">
+      <view class="banci_left_top">
+        出发站
+      </view>
+      <view class="banci_left_bottom">
+        <view class="">{{city_car_left[city_car_leftIndex]}}</view>
+      </view>
+    </view>
+    <view class="banci_right">
+        <view class="banci_right_top">
+          终点站
+        </view>
+        <view class="banci_right_bottom">
+          <view class="">{{city_car_right[city_car_rightIndex]}}</view>
+        </view>
+    </view>
+  </view>
+</view>
