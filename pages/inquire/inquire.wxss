@@ -1,1 +1,51 @@
-/* pages/inquire/inquire.wxss */
+/*选项卡样式*/
+page{  
+  display: flex;  
+  flex-direction: column;  
+  height: 100%;  
+}  
+.navbar{  
+  flex: none;  
+  display: flex;  
+  background: #F5F4F2;  
+  border: 1rpx solid #d9d9d9;
+}  
+.navbar .item{  
+  position: relative;  
+  flex: auto;  
+  text-align: center;  
+  line-height: 80rpx;  
+  color: #ccc;
+}  
+.navbar .item.active{  
+  color: black;  
+}  
+.navbar .item.active:after{  
+  content: "";  
+  display: block;  
+  position: absolute;  
+  bottom: 0;  
+  left: 0;  
+  right: 0;  
+  height: 6rpx;  
+  background: #FFBF25;  
+}
+
+.weui-cell::before {
+  content:" ";
+  border:0;
+}
+.weui-cell::after {
+  content:" ";
+  position:absolute;
+  top:180rpx;
+  right:0;
+  height:1px;
+  border-bottom:1rpx solid #d9d9d9;
+  color:#d9d9d9;
+  left:15px;
+}
+.for_banci{
+  display: flex;
+  align-items: center;
+}

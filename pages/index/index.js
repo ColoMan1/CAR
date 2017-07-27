@@ -5,14 +5,15 @@ var app = getApp()
 //var common = require('../data/data.js')
 Page({
   data : {
-    date:"点击以选择",
+    date:"点击选择日期",
     accounts: ["微信支付", "财付通支付", "支付宝支付"],
     accountIndex: 0,
-    city_car_left: app.globalData.city_car_left,
-    city_car_leftIndex: app.globalData.city_car_leftIndex,
-    city_car_right: app.globalData.city_car_right,
-    city_car_rightIndex: app.globalData.city_car_rightIndex,
-    price: app.globalData.price
+    city_car_left: ["上海浦东", "香港", "澳大利亚", "安徽"],
+    city_car_leftIndex: 0,
+    city_car_right: ["上海浦东", "香港", "澳大利亚", "安徽"],
+    city_car_rightIndex: 1,
+    price: app.globalData.price,
+    time:"点击选择时间"
   },
 
   
@@ -40,7 +41,11 @@ Page({
     })
     console.log(e.detail)
   },
-
+  bindTimeChange: function (e) {
+    this.setData({
+      time: e.detail.value
+    })
+  },
 
   onLoad: function () {
     console.log('onLoad')
@@ -55,9 +60,4 @@ Page({
   }
 })
 
-module.exports = {
-  city_car_left: city_car_left,
-  city_car_leftIndex: city_car_leftIndex,
-  city_car_right: city_car_right,
-  city_car_rightIndex: city_car_rightIndex
-};
+ 

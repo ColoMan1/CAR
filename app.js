@@ -25,10 +25,6 @@ App({
 
   globalData: {
     userInfo: null,
-    price:"387",
-    city_car_left: ["上海浦东", "香港", "澳大利亚", "安徽"],
-    city_car_leftIndex: 0,
-    city_car_right: ["上海浦东", "香港", "澳大利亚", "安徽"],
-    city_car_rightIndex: 1,
+    price:"387"
   }
 })

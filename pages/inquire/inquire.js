@@ -4,9 +4,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    navbar:["全部班次","已发车","未发车"],
+    currentTab:1,
+    classes:[{
+        star: "平湖经济开发区",
+        end: "江苏南京",
+        times: "17:30发车"
+      },{
+          star: "阿拉伯",
+          end: "杭州",
+          times: "16:23发车"
+      },{
+          star: "安徽",
+          end: "杭州",
+          times: "18:35发车"
+      },
+    ]
   },
-
+  navbarTap: function (e) {
+    console.log(e)
+    this.setData({
+      currentTab: e.target.dataset.idx
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

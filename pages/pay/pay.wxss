@@ -1,1 +1,42 @@
 /* pages/pay/pay.wxss */
+.pay_top{
+  border: 1px solid red;
+  height: 600rpx;
+  width: 670rpx;
+  margin: 0 auto;
+  margin-top: 90rpx;
+}
+.pay_top_top{
+  text-align: center;
+  color: #ccc;
+}
+.pay_top_top text{
+  font-size: 200rpx;
+  color: black;
+}
+.banci_center{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 580rpx;
+  height: 160rpx;
+  margin: 0 auto;
+  border-radius: 5rpx;
+  text-align: center;
+}
+.banci_left,.banci_right{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 110rpx;
+  width: 50%;
+}
+.banci_left_top,.banci_right_top{
+  font-size: 30rpx;
+  color: #ccc;
+}
+.pay_time{
+  text-align: center;
+  color: #ccc;
+  margin-top: 40rpx;
+}
