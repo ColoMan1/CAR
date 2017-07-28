@@ -48,4 +48,5 @@ page{
 .for_banci{
   display: flex;
   align-items: center;
+  margin: 0 10rpx;     /*车站箭头时间平分布局 */
 }

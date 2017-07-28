@@ -1,0 +1,25 @@
+
+<!-- 
+        =======     账户信息 
+-->
+<navigator url="../alter_phone/alter_phone" style="margin-top:50rpx;">
+ <view class="weui-panel__ft" style="background-color:white;">
+    <view class="weui-cell weui-cell_access weui-cell_link box">
+        <view class="weui-cell__bd">
+            修改手机号
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+  </view>  
+</navigator>
+
+<navigator url="../alter_password/alter_password">
+ <view class="weui-panel__ft" style="background-color:white;">
+    <view class="weui-cell weui-cell_access weui-cell_link" style="">
+        <view class="weui-cell__bd">
+            修改密码
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+  </view>  
+</navigator>

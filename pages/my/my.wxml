@@ -1,1 +1,89 @@
-<view class="">我的</view>
+<!-- 
+        =======     我的界面 
+-->
+<navigator url="../account/account">
+ <view class="weui-panel__ft" style="background-color:white;margin-top:100rpx;">
+    <view class="weui-cell weui-cell_access weui-cell_link" style="">
+        <view class="weui-cell__bd">
+            <image src="{{userInfo.avatarUrl}}" class="picture"></image>
+        </view>
+         <view class="weui-cell__bd">
+              <view class="classname">{{userInfo.nickName}}</view>
+              <view class="classname">{{userInfo.province}}</view>
+        </view>
+        <view class="weui-cell__bd" style="text-align:right;">
+           <image src="../../img/已结单.png" style="height:55rpx;width:125rpx;"></image>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+  </view>  
+</navigator>
+
+<navigator url="../my_yy/my_yy" style="position:relative;">
+  <view class="weui-panel__ft box">
+    <view class="weui-cell weui-cell_access weui-cell_link" style="padding:3px 15px;border-top: 1px solid  #E6E6E6;border-bottom:0;">
+        <view class="weui-cell__bd" style="width:90rpx;">
+            <image src="../../img/预约订单.png" style="height:80rpx;width:80rpx;"></image>
+        </view>
+         <view class="weui-cell__bd">
+            我的预约
+        </view>
+         <view class="weui-cell__bd">
+             <!-- 用于撑开布局-->                         
+        </view>
+        <view class="weui-cell__bd">
+             <!-- 用于撑开布局-->                            
+        </view>
+         <view class="weui-cell__bd">
+              <!-- 用于撑开布局-->                            
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+  </view>  
+</navigator>
+
+<navigator url="../my_xc/my_xc" style="position:relative;">
+  <view class="weui-panel__ft box" style="margin:0;">
+    <view class="weui-cell weui-cell_access weui-cell_link" style="border:0;padding:3px 15px;">
+        <view class="weui-cell__bd" style="width:90rpx;">
+            <image src="../../img/行程.png" style="height:80rpx;width:80rpx;"></image>
+        </view>
+         <view class="weui-cell__bd">
+            我的行程
+        </view>
+         <view class="weui-cell__bd">
+             <!-- 用于撑开布局-->                         
+        </view>
+        <view class="weui-cell__bd">
+             <!-- 用于撑开布局-->                            
+        </view>
+         <view class="weui-cell__bd">
+              <!-- 用于撑开布局-->                            
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+  </view>  
+</navigator>
+
+<navigator url="../information/information">
+ <view class="weui-panel__ft box" style="margin:0;">
+    <view class="weui-cell weui-cell_access weui-cell_link" style="padding:3px 15px;border-top: 0;border-bottom:1px solid  #E6E6E6;">
+        <view class="weui-cell__bd" style="width:90rpx;">
+            <image src="../../img/信息.png" style="height:80rpx;width:80rpx;"></image>
+        </view>
+         <view class="weui-cell__bd">
+            完善信息
+        </view>
+         <view class="weui-cell__bd">
+             <!-- 用于撑开布局-->                         
+        </view>
+        <view class="weui-cell__bd">
+             <!-- 用于撑开布局-->                            
+        </view>
+         <view class="weui-cell__bd">
+              <!-- 用于撑开布局-->                            
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+  </view>  
+</navigator>

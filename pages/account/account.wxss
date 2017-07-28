@@ -1,0 +1,4 @@
+.box::before{
+  content:" ";
+  border-top: 0;
+}

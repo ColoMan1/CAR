@@ -1,4 +1,7 @@
 
+<!-- 
+        =======     班次查询 
+-->
  <!--导航条-->  
 <view class="navbar">  
   <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" bindtap="navbarTap">{{item}}</text>
@@ -13,9 +16,10 @@
   <view wx:for="{{classes}}" class="weui-panel__ft" style="background-color:white;">
     <view class="weui-cell weui-cell_access weui-cell_link" style="">
         <view class="weui-cell__bd">
-          <view class="weui-cell__bd" style="display:flex;justify-content:space-between;width:90%;">
+         <view class="weui-cell__bd" style="display:flex;width:90%;">
+         <!-- <view class="weui-cell__bd" style="display:flex;justify-content:space-between;width:90%;">   车站箭头和时间平分布局-->
             <view class="for_banci">{{item.star}}</view>
-            <image src="../../img/箭头.png" style="height:70rpx;width:80rpx;"></image>
+            <image src="../../img/箭头.png" style="height:60rpx;width:60rpx;"></image>
             <view class="for_banci">{{item.end}}</view>
             <view class="for_banci">{{item.times}}</view>
           </view><view class="weui-cell__bd">

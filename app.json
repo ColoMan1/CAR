@@ -1,15 +1,22 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/inquire/inquire",
-    "pages/my/my",
-    "pages/pay/pay",
-    "pages/pay_success/pay_success"
-  ],
+    "pages": [
+      "pages/index/index",
+      "pages/inquire/inquire",
+      "pages/my/my",
+      "pages/pay/pay",
+      "pages/pay_success/pay_success",
+      "pages/account/account",
+      "pages/alter_phone/alter_phone",
+      "pages/alter_success/alter_success",
+      "pages/my_yy/my_yy",
+      "pages/my_xc/my_xc",
+      "pages/information/information",
+      "pages/alter_password/alter_password"
+    ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "预约订票",
+    "navigationBarTitleText": "",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
