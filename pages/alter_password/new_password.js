@@ -1,4 +1,4 @@
-// pages/alter_password/alter_password.js
+// pages/alter_password/new_password.js
 Page({
 
   /**
@@ -16,11 +16,11 @@ Page({
         title: '找回密码'
      })
   },
-   navTo_newpass:function(){
-      wx.navigateTo({
-         url: 'new_password',
-      })
-   },
+  navTo_newpass_success: function () {
+     wx.navigateTo({
+        url: 'new_password_success',
+     })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

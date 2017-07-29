@@ -1,1 +1,82 @@
 /* pages/information/information.wxss */
+
+
+.infor_form{
+   display: flex;
+   justify-content: flex-end;
+}
+.input_box{
+   background-color: none;
+   margin-top:27rpx; 
+   background-color: transparent ;
+}
+.input_box::before{
+   content: "";
+   border: 0;
+}
+.input_box::after{
+   content: "";
+   border: 0;
+}
+.input2::before{
+    content: "";
+    border: 0;
+}
+.input::after{
+    content:" ";
+    position:absolute;
+    bottom:0;
+    right:0;
+    height:1px;
+    border-bottom:1rpx solid #F5F4F2;
+    color:#d9d9d9;
+    left:15px;
+}
+.input2::after{
+    content:" ";
+    position:absolute;
+    bottom:0;
+    right:0;
+    height:1px;
+    border-bottom:1rpx solid #F5F4F2;
+    color:#d9d9d9;
+    left:15px;
+}
+.page__bd{
+    width:90%;
+    margin:0 auto;
+    border-right: 1rpx solid #d9d9d9;
+    border-left: 1rpx solid #d9d9d9;
+    background-color:#fff;
+    line-height:1.41176471;
+    font-size:34rpx;
+}
+.weui-cell__ft_in-access::after{
+    content: "";
+    right: 20rpx ;
+}
+.weui-uploader__img {
+    height: 100rpx;
+    width: 100rpx;
+}
+.idcar{
+    margin-top:50rpx;
+    width:90%;
+    margin: 0 auto;
+    border-right: 1rpx solid #d9d9d9;
+    border-left: 1rpx solid #d9d9d9;
+}
+.idcar::after{
+    border-bottom: 0; 
+}
+.bottom_box{
+    width: 90%;
+    margin: 20rpx auto;
+    border-right: 1rpx solid #d9d9d9;
+    border-left: 1rpx solid #d9d9d9;
+}
+.footer{
+    text-align: center;
+    font-size: 25rpx;
+    color: #ccc;
+}

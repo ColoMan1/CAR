@@ -16,6 +16,11 @@ Page({
       title: '修改手机号'
     })
   },
+  navTo:function(){
+      wx.navigateTo({
+         url: 'alter_success'
+      })
+  },
   bindform:function(e){
     console.log('第一个input里面的内容', e.detail.value.input,'第二个input里面的内容', e.detail.value.input1)
   },

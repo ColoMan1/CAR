@@ -11,7 +11,10 @@
       "pages/my_yy/my_yy",
       "pages/my_xc/my_xc",
       "pages/information/information",
-      "pages/alter_password/alter_password"
+      "pages/alter_password/alter_password",
+      "pages/alter_password/new_password",
+      "pages/alter_password/new_password_success",
+      "pages/alter_phone/alter_success"
     ],
   "window":{
     "backgroundTextStyle":"light",

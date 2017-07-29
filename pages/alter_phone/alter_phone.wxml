@@ -18,5 +18,5 @@
           </view>
       </view>
   </view>
-  <button form-type="submit" class="weui-btn" type="primary" style="background-color:#FFCE39;color:black;margin:50rpx;">提交</button>
+  <button bindtap="navTo" form-type="submit" class="weui-btn" type="primary" style="background-color:#FFCE39;color:black;margin:50rpx;">提交</button>
  </form>

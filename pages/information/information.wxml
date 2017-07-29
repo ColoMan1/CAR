@@ -1,3 +1,128 @@
 <!-- 
         =======     完善信息 
 -->
+<view style="background-color:#FAC61D;height:240rpx;width:90%;margin:50rpx auto;">
+    <form bindsubmit="bindform" class="infor_form">
+        <view class="weui-cells weui-cells_after-title input_box">
+            <view class="weui-cell weui-cell_input input">
+                <view class="weui-cell__bd">
+                    <input name="input" type="number" class="weui-input" placeholder-style="color:white;" placeholder="您的姓名" />
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode input2">
+                <view class="weui-cell__bd">
+                    <input name="input1" type="number" class="weui-input" placeholder-style="color:#F5F4F2;" placeholder="所在公司名称" />
+                </view>
+            </view>
+        </view>
+    </form>
+</view>
+
+<view class="page__bd" style="margin-bottom:20rpx;">
+    <view class="weui-cells">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <view class="weui-uploader__bd">
+                    <view class="weui-uploader__files" id="uploaderFiles1">
+                        <block wx:for="{{files1}}" wx:key="*this">
+                            <view class="weui-uploader__file" bindtap="previewImage1" id="{{item}}">
+                                <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                            </view>
+                        </block>
+                    </view>
+                    <view hidden="{{hide1}}" bindtap="chooseImage1" class="weui-uploader__input-box" style="height:100rpx;width:100rpx;">
+                        <view class="weui-uploader__input"></view>
+                    </view>
+                    <view class="weui-cell__bd prove">
+                        <view>高端人才录用证明</view>
+                        <view style="font-size:30rpx;color:#ccc;margin-top:10rpx;">用于审验用车资格,将做保密处理</view>
+                    </view>
+                    <view class="weui-cell__ft weui-cell__ft_in-access" style="position:static;right:20rpx;"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="weui-cells weui-cells_after-title idcar">
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+            身份证号码
+        </view>
+        <view class="weui-cell__bd">
+            <input name="input" type="number" class="weui-input" placeholder-style="text-align: right;" placeholder="点击填写" />
+        </view>
+    </view>
+</view>
+
+<view class="page__bd">
+    <view class="weui-cells" style="margin:0;">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <view class="weui-uploader__bd">
+                    <view class="weui-uploader__files" id="uploaderFiles2">
+                        <block wx:for="{{files2}}" wx:key="*this">
+                            <view class="weui-uploader__file" bindtap="previewImage2" id="{{item}}">
+                                <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                            </view>
+                        </block>
+                    </view>
+                    <view hidden="{{hide2}}" bindtap="chooseImage2" class="weui-uploader__input-box" style="height:100rpx;width:100rpx;">
+                        <view class="weui-uploader__input"></view>
+                    </view>
+                    <view class="weui-cell__bd prove">
+                        <view>身份证正面照片</view>
+                    </view>
+                    <view class="weui-cell__ft weui-cell__ft_in-access" style="position:static;right:20rpx;"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="page__bd" style="border-bottom:1rpx solid #d9d9d9;">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">
+            <view class="weui-uploader__bd">
+                <view class="weui-uploader__files" id="uploaderFiles3">
+                    <block wx:for="{{files3}}" wx:key="*this">
+                        <view class="weui-uploader__file" bindtap="previewImage3" id="{{item}}">
+                            <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                        </view>
+                    </block>
+                </view>
+                <view hidden="{{hide3}}" bindtap="chooseImage3" class="weui-uploader__input-box" style="height:100rpx;width:100rpx;">
+                    <view class="weui-uploader__input"></view>
+                </view>
+                <view class="weui-cell__bd prove">
+                    <view>身份证背面照片</view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access" style="position:static;right:20rpx;"></view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="weui-cells weui-cells_after-title bottom_box">
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">公司上班时间</view>
+        </view>
+        <view class="weui-cell__bd">
+            <picker mode="time" value="{{timeS}}" start="9:00" end="24:00" bindchange="bindTimeChanges">
+                <view class="weui-input" style="text-align:right;color:#ccc;">{{timeS}}</view>
+            </picker>
+        </view>
+    </view>
+     <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">公司下班时间</view>
+        </view>
+        <view class="weui-cell__bd">
+            <picker mode="time" value="{{timeX}}" start="9:00" end="24:00" bindchange="bindTimeChangex">
+                <view class="weui-input" style="text-align:right;color:#ccc;">{{timeX}}</view>
+            </picker>
+        </view>
+    </view>
+</view>
+
+<view class="footer">填写准确信息可以加速路线开通</view>
