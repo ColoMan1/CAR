@@ -6,19 +6,21 @@
   <view class="weui-cells weui-cells_after-title input_box">
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__bd">
-        <input name="input" type="number" class="weui-input" placeholder="手机号" />
+        <input bindblur="loginBlur1" value="{{phone}}" name="input" type="number" class="weui-input" placeholder="手机号" />
       </view>
     </view>
     <view class="weui-cell weui-cell_input weui-cell_vcode">
       <view class="weui-cell__bd">
-        <input name="input1" type="number" class="weui-input" placeholder="请输入密码" />
+        <input bindblur="loginBlur2" value="{{pass}}" name="input1" password="true" type="number" class="weui-input" placeholder="请输入密码" />
       </view>
     </view>
   </view>
-  <button bindtap="navTo" form-type="submit" class="weui-btn" type="primary" style="background-color:#FFCE39;color:black;margin-top:100rpx;width:85%;">登录</button>
+  <button bindtap="loginNavto" form-type="submit" class="weui-btn" type="primary" style="background-color:#FFCE39;color:black;margin-top:100rpx;width:85%;">登录</button>
 </form>
 <view class="center_box">
+<navigator url="register">
   <view class="center_left">创建新用户</view>
+</navigator>
   <view class="center_right">忘记密码?</view>
 </view>
 <view style="text-align:center;font-size:27rpx;font-weight:bold;margin-top:60rpx;">其他登录方式</view>
@@ -28,6 +30,6 @@
 <view style="position:absolute;bottom:20rpx;display:flex;justify-content:center;width:100%;">
   <label>
     <icon wx:if="{{hide}}" type="success" size="18"/>
-    <icon wx:if="{{show}}" bindtap="clickTap" type="circle" size="18"/><text style="font-size:26rpx;">同意《软件服务及订票协议》</text> 
+    <icon wx:else="{{hide}}" bindtap="clickTap" type="circle" size="18"/><text style="font-size:26rpx;">同意《软件服务及订票协议》</text> 
   </label>
 </view>

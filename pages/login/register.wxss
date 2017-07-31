@@ -1,4 +1,4 @@
-/* pages/login/login.wxss */
+/* pages/login/register.wxss */
 
 .logo{
   background-color: blueviolet;
@@ -24,11 +24,4 @@
 }
 .weui-cells{
   background-color: transparent;
-}
-.center_box{
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-  margin: 30rpx auto;
-  font-size: 26rpx;
 }

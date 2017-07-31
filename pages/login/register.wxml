@@ -1,0 +1,34 @@
+<!-- 
+        =======     注册页面 
+-->
+<view class="logo"></view>
+<form bindsubmit="bindform">
+  <view class="weui-cells weui-cells_after-title  input_box">
+      <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+              <input value="{{phoneNumber}}" bindblur="inputBlurPhone" name="input" type ="number" class="weui-input" placeholder="手机号"/>
+          </view>
+      </view>
+      <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <view class="weui-cell__bd">
+              <input name="input1" type ="number" class="weui-input" placeholder="验证码" />
+          </view>
+          <view class="weui-cell__ft">
+              <!-- <view class="weui-vcode-btn">获取验证码</view> -->
+              <button class="weui-btn mini-btn" type="primary" size="mini" style="color:black;background-color:#FFC12C;margin:20rpx 10rpx 0 0;">获取验证码</button>
+          </view>
+      </view>
+       <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+              <input value="{{passWord}}" bindblur="inputBlurPass" password="true" name="input" type ="number" class="weui-input" placeholder="输入密码"/>
+          </view>
+      </view>
+  </view>
+  <button bindtap="registerNavto" form-type="submit" class="weui-btn" type="primary" style="background-color:#FFCE39;color:black;margin:50rpx;">注册</button>
+ </form>
+ <view style="position:absolute;bottom:20rpx;display:flex;justify-content:center;width:100%;">
+  <label>
+    <icon wx:if="{{hide}}" type="success" size="18"/>
+    <icon wx:else="{{hide}}" bindtap="clickTap1" type="circle" size="18"/><text style="font-size:26rpx;">同意《软件服务及订票协议》</text> 
+  </label>
+</view>

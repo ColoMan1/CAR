@@ -6,19 +6,47 @@ Page({
    */
   data: {
     hide:false,
-    show:true
+    phone:"",
+    pass:""
   },
   clickTap:function(){
     this.setData({
-      hide:true,
-      show:false
+      hide:true
     })
+  },
+  loginBlur1: function (res) {
+      this.data.phone = res.detail.value
+  },
+  loginBlur2: function (res) {
+      this.data.pass = res.detail.value
+  },
+  loginNavto: function () {
+      if (this.data.phone === "" || this.data.pass === "") {
+          wx.showModal({
+              title: '提示',
+              content: '手机号或者密码不能为空'
+          })
+      }else{
+          wx.navigateTo({
+              url: '../index/index'
+          })
+      }  
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+      var that =this
+      wx.getStorage({
+          key: 'info',
+          success: function (res) {
+              console.log(res.data)
+              that.setData({
+                  pass: res.data.passWord,
+                  phone: res.data.phoneNumber
+                })
+          }
+      })
   },
 
   /**
