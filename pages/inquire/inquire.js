@@ -21,6 +21,15 @@ Page({
       },
     ]
   },
+  onPullDownRefresh: function () {
+    wx.onLoad(),
+      wx.showToast({
+        title: '加载中...',
+        icon: 'loading',
+        duration: 2000
+      })
+    wx.stopPullDownRefresh()
+  },
   navbarTap: function (e) {
     console.log(e)
     this.setData({
@@ -31,9 +40,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: '班次查询'
-    })
+
   },
 
   /**

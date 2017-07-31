@@ -1,5 +1,6 @@
 {
     "pages": [
+      "pages/login/login",
       "pages/index/index",
       "pages/inquire/inquire",
       "pages/my/my",
@@ -17,10 +18,11 @@
       "pages/alter_phone/alter_success"
     ],
   "window":{
-    "backgroundTextStyle":"light",
+    "backgroundTextStyle":"dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh":true
   },
   "tabBar": {
     "backgroundColor": "white",

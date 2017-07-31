@@ -20,9 +20,6 @@ Page({
         userInfo: userInfo
       })
     })
-    wx.setNavigationBarTitle({
-      title: '我的'
-    })
   },
 
   /**

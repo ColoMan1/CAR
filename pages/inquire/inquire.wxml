@@ -10,7 +10,7 @@
 <view hidden="{{currentTab!==0}}">
  tab_01
 </view>  
-  
+
 <!--已发车-->  
 <view hidden="{{currentTab!==1}}">  
   <view wx:for="{{classes}}" class="weui-panel__ft" style="background-color:white;">

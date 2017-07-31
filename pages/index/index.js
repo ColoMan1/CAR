@@ -49,9 +49,7 @@ Page({
   },
 
   onLoad: function () {
-    wx.setNavigationBarTitle({
-      title: '预约订票'
-    })
+
   }
 })
 

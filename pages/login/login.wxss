@@ -1,0 +1,31 @@
+/* pages/login/login.wxss */
+
+.logo{
+  background-color: blueviolet;
+  height: 250rpx;
+  width: 60%;
+  margin: 50rpx auto;
+}
+.input_box{
+  width: 85%;
+  margin: 0 auto;
+}
+.weui-cell{
+  padding: 0;
+}
+.weui-cell::before{
+  left: 0;
+}
+.weui-cells::before{
+  border-top: 0;
+}
+.weui-cells{
+  background-color: transparent;
+}
+.center_box{
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 30rpx auto;
+  font-size: 26rpx;
+}
