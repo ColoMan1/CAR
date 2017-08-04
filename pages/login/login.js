@@ -27,7 +27,7 @@ Page({
               content: '手机号或者密码不能为空'
           })
       }else{
-          wx.navigateTo({
+        wx.redirectTo({
               url: '../index/index'
           })
       }  

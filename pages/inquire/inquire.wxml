@@ -1,37 +1,63 @@
-
 <!-- 
         =======     班次查询 
 -->
- <!--导航条-->  
-<view class="navbar">  
-  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" bindtap="navbarTap">{{item}}</text>
-</view>
-<!--全部班次-->  
-<view hidden="{{currentTab!==0}}">
- tab_01
-</view>  
+<block wx:if="{{topShow}}">
+  <view class="weui-loadmore">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+</block>
+<block wx:else>
 
-<!--已发车-->  
-<view hidden="{{currentTab!==1}}">  
-  <view wx:for="{{classes}}" class="weui-panel__ft" style="background-color:white;">
-    <view class="weui-cell weui-cell_access weui-cell_link" style="">
-        <view class="weui-cell__bd">
-         <view class="weui-cell__bd" style="display:flex;width:90%;">
-         <!-- <view class="weui-cell__bd" style="display:flex;justify-content:space-between;width:90%;">   车站箭头和时间平分布局-->
-            <view class="for_banci">{{item.star}}</view>
-            <image src="../../img/箭头.png" style="height:60rpx;width:60rpx;"></image>
-            <view class="for_banci">{{item.end}}</view>
-            <view class="for_banci">{{item.times}}</view>
-          </view><view class="weui-cell__bd">
-            <image src="../../img/已结单.png" style="height:70rpx;width:60rpx;"></image>
+
+  <!--导航条-->
+  <view class="navbar">
+    <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" bindtap="navbarTap">{{item}}</text>
+  </view>
+  <!--全部班次-->
+  <view hidden="{{currentTab!==0}}">
+    tab_01
+  </view>
+
+  <!--已发车-->
+  <view hidden="{{currentTab!==1}}">
+    <scroll-view scroll-y="true" bindscrolltolower="scrolltolower" style="height:1026rpx;">
+      <view wx:for="{{classes}}" class="weui-panel__ft" style="background-color:white;">
+        <view class="weui-cell weui-cell_access weui-cell_link" style="">
+          <view class="weui-cell__bd">
+            <view class="weui-cell__bd" style="display:flex;width:90%;">
+
+              <!-- <view class="weui-cell__bd" style="display:flex;justify-content:space-between;width:90%;">   车站箭头和时间平分布局-->
+
+              <view class="for_banci">{{item.CategoryName}}</view>
+              <image src="../../img/箭头.png" style="height:60rpx;width:60rpx;"></image>
+              <view class="for_banci">{{item.Title}}</view>
+              <view class="for_banci">{{item.CreateTime}}</view>
+            </view>
+            <view class="weui-cell__bd">
+              <image src="../../img/已结单.png" style="height:70rpx;width:60rpx;"></image>
+            </view>
           </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </view>
-        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </view>
-  </view>  
-</view>  
-  
-<!--未发车-->  
-<view hidden="{{currentTab!==2}}">  
-  tab_03  
-</view>
+      </view>
+      <block wx:if="{{bottomShow}}">
+       <view class="weui-loadmore">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">玩命加载中...</view>
+      </view>
+    </block> 
+     <block wx:else>
+      <view class="weui-loadmore weui-loadmore_line">
+          <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+      </view>
+    </block> 
+    </scroll-view>
+     
+  </view>
+
+  <!--未发车-->
+  <view hidden="{{currentTab!==2}}">
+    tab_03
+  </view>
+</block>
