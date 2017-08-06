@@ -1,0 +1,35 @@
+<!-- 
+        =======     乘车详情 
+-->
+<view class="pay_top">
+  <view class="pay_top_top">
+   约  <text>{{topTime}}</text> 分钟后到站
+  </view>
+  <view class="banci_center">
+    <view class="banci_left">
+      <view class="banci_left_top">
+        出发站
+      </view>
+      <view class="banci_left_bottom">
+        <view class="">{{bayCarDetails_left[bayCarDetails_leftIndex]}}</view>
+      </view>
+    </view>
+    <image src="../../img/箭头1.png" style="height:72rpx;width:72rpx;"></image>
+    <view class="banci_right">
+        <view class="banci_right_top">
+          终点站
+        </view>
+        <view class="banci_right_bottom">
+          <view class="">{{bayCarDetails_right[bayCarDetails_rightIndex]}}</view>
+        </view>
+    </view>
+  </view>
+</view>
+
+<view class="page__bd page__bd_spacing" style="padding:180rpx 30rpx 0;text-align:center;">
+  <navigator url="../pay_success/pay_success?time={{time}}">
+    <button class="weui-btn" type="primary" style="background-color:#FFCE39;color:black;">确认支付</button>
+  </navigator>
+  <image style="height:60rpx;width:200rpx;margin-top:30rpx;" src="../../img/微信支付.png"></image>
+</view>
+
