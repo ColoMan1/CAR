@@ -2,10 +2,10 @@
 /* pages/pay/pay.wxss */
 .pay_top{
   background-color: #FBD867;
-  height: 396rpx;
+  height: 406rpx;
   width: 670rpx;
   margin: 0 auto;
-  margin-top: 90rpx;
+  margin-top: 55rpx;
 }
 .pay_top_top{
   text-align: center;
@@ -13,8 +13,7 @@
   font-weight: bold;
   background-color: #FCCC32;
   font-size: 52rpx;
-  height: 236rpx;
-  line-height: 236rpx;
+  padding:65rpx 0;
 }
 .banci_center{
   display: flex;
@@ -23,7 +22,6 @@
   width: 580rpx;
   height: 160rpx;
   margin: 0 auto;
-  border-radius: 5rpx;
   text-align: center;
 }
 .banci_left,.banci_right{
@@ -36,4 +34,15 @@
 .banci_left_top,.banci_right_top{
   font-size: 30rpx;
   color: #ccc;
+}
+.driverInfo image{
+  height:80rpx;
+  width:80rpx;
+  float: left;
+}
+.driverInfo{
+  color: #BDBEBD;
+  width:670rpx;
+  margin:0 auto;
+  font-size: 30rpx;
 }

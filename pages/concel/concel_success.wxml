@@ -1,0 +1,21 @@
+
+<!-- 
+        =======     取消成功 
+-->
+
+<view class="icon-box" style="text-align:center;margin:100rpx 0 50rpx 0;">
+    <image src="../../img/叉.png" style="height:300rpx;width:300rpx;"></image>
+</view>
+<view style="text-align:center;font-size:46rpx;margin: 30rpx 0;font-weight:bold;">
+   取消成功
+</view>
+<view style="text-align:center;font-size:32rpx;color:#ccc;width:60%;margin:0 auto;">
+   感谢您的反馈,我们将以此为依据改善服务
+</view>
+<view class="page__bd page__bd_spacing" style="padding:100rpx 30rpx 0;text-align:center;">
+</view>
+<view class="page__bd page__bd_spacing" style="padding:30rpx 30rpx 0;text-align:center;">
+  <navigator url="">
+    <button class="weui-btn" type="primary" style="border：1px solid #cc;background-color:white;color:black;">返回主页面</button>
+  </navigator>
+</view>

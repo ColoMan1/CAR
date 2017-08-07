@@ -1,4 +1,4 @@
-// pages/alter_success/alter_success.js
+// pages/concel/concel_success.js
 Page({
 
   /**

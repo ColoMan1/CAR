@@ -1,0 +1,26 @@
+<!-- 
+        =======     取消原因 
+-->
+<view class="cancelTop">
+  <view>订单已取消</view>
+  <view>请告诉我们原因</view>
+  <view class="cancelTop3">我们将以此作为依据改进乘车体验</view>
+</view>
+
+
+<view class="weui-cells weui-cells_after-title">
+	<radio-group bindchange="radioChange">
+	  <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="{{item.value}}">
+	    <view class="weui-cell__hd">
+	      <radio value="{{item.value}}" checked="true"/>
+	    </view>
+	    <view class="weui-cell__bd">{{item.name}}</view>
+	  </label>
+	</radio-group>
+</view>
+
+<view class="page__bd page__bd_spacing" style="padding:76rpx 30rpx 0;text-align:center;">
+  <navigator url="concel_success">
+    <button class="weui-btn" type="primary" style="background-color:#FFCE39;color:black;">提交</button>
+  </navigator>
+</view>

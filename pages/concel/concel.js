@@ -1,17 +1,18 @@
-// pages/inquire/bayCarDetails.js
+// pages/concel/concel.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      topTime:30,
-      bayCarDetails_left: ["上海浦东", "香港", "澳大利亚", "安徽"],
-      bayCarDetails_leftIndex: 0,
-      bayCarDetails_right: ["上海浦东", "香港", "澳大利亚", "安徽"],
-      bayCarDetails_rightIndex: 1,
-      carId:"浙F 12345    42座大巴",
-      driver:"王师傅"
+    items: [
+      { value: 'USA', name: '行程有变,暂时不需要用车' },
+      { value: 'CHN', name: '联系不上司机', checked: 'true' },
+      { value: 'BRA', name: '找不到上车点' },
+      { value: 'JPN', name: '司机态度恶劣' },
+      { value: 'ENG', name: '司机颜值太低' },
+      { value: 'FRA', name: '车上没有妹子' },
+    ]
   },
 
   /**

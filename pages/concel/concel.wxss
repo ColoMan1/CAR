@@ -1,0 +1,13 @@
+/* pages/concel/concel.wxss */
+.cancelTop{
+  text-align: center;
+  font-weight: bold;
+  font-size: 46rpx;
+  padding: 50rpx 0;
+}
+.cancelTop3{
+  color: #ccc;
+  font-weight: none;
+  font-size: 26rpx;
+  margin-top: 20rpx;
+}

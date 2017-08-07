@@ -1,7 +1,8 @@
 {
     "pages": [
+      "pages/concel/concel",      
       "pages/inquire/inquire",
-    "pages/inquire/bayCarDetails",
+      "pages/inquire/bayCarDetails",
       "pages/login/login",
       "pages/login/register",
       "pages/index/index",
@@ -10,14 +11,14 @@
       "pages/pay_success/pay_success",
       "pages/account/account",
       "pages/alter_phone/alter_phone",
-      "pages/alter_success/alter_success",
       "pages/my_yy/my_yy",
       "pages/my_xc/my_xc",
       "pages/information/information",
       "pages/alter_password/alter_password",
       "pages/alter_password/new_password",
       "pages/alter_password/new_password_success",
-      "pages/alter_phone/alter_success"
+      "pages/alter_phone/alter_success",
+      "pages/concel/concel_success"
     ],
   "window":{
     "backgroundTextStyle":"dark",
