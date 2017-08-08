@@ -14,8 +14,10 @@
               <input name="input1" type ="number" class="weui-input" placeholder="验证码" />
           </view>
           <view class="weui-cell__ft">
-              <!-- <view class="weui-vcode-btn">获取验证码</view> -->
-              <button class="weui-btn mini-btn" type="primary" size="mini" style="color:black;background-color:#FFC12C;margin:20rpx 10rpx 0 0;">获取验证码</button>
+              <button class="weui-btn mini-btn" type="primary" size="mini" style="color:black;background-color:#FFC12C;margin:20rpx 10rpx 0 0;" bindtap="codeTime">
+                <text wx:if="{{keyShow}}">{{code}}</text>
+                <text wx:else="{{keyShow}}">已发送 {{code_time}}</text>
+              </button>
           </view>
       </view>
        <view class="weui-cell weui-cell_input">

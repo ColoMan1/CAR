@@ -1,18 +1,53 @@
 // pages/login/register.js
-Page({
 
+var setTime = ''
+Page({
   /**
    * 页面的初始数据
    */
   data: {
-  hide:false,
-  passWord:"",
-  phoneNumber:""
+    hide:false,
+    passWord:"",
+    phoneNumber:"",
+    code:"获取验证码",
+    keyShow:true,
+    code_time:12
   },
-    clickTap1:function(){
-        this.setData({
-            hide:true
-        })
+  time1() { //定时器递减函数
+    var that1 = this
+    if (that1.data.code_time <= 10 && that1.data.code_time >= 1){ 
+      that1.setData({
+        code_time: '0'+(that1.data.code_time - 1)
+      })
+    }else if(that1.data.code_time == 0) {
+      that1.setData({
+        keyShow: true,
+        code: "重新发送",
+        numb: false,
+        code_time: that1.data.code_time - 1
+      })
+      clearInterval(this.setTime)
+    }else{
+      that1.setData({
+        code_time: that1.data.code_time - 1
+      })
+    }
+    //return
+  },
+  codeTime:function(){
+    this.setData({
+      keyShow:false,
+      code_time:12
+    })
+    var that = this
+    this.setTime = setInterval(function () {
+      that.time1()//这里必须要把递减的逻辑写成一个函数封装出去  不能直接用this.setData
+    }, 1000)
+  },
+  clickTap1:function(){
+    this.setData({
+        hide:true
+    })
   }, 
     inputBlurPhone:function(res){
         this.data.phoneNumber = res.detail.value
@@ -50,9 +85,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+   
   },
-
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

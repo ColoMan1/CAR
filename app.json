@@ -1,9 +1,9 @@
 {
     "pages": [
+      "pages/login/login",      
       "pages/concel/concel",      
       "pages/inquire/inquire",
       "pages/inquire/bayCarDetails",
-      "pages/login/login",
       "pages/login/register",
       "pages/index/index",
       "pages/my/my",
