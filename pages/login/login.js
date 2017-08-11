@@ -20,7 +20,7 @@ Page({
   loginBlur2: function (res) {
       this.data.pass = res.detail.value
   },
-  loginNavto: function () {
+  loginNavto: function () {  //验证
       if (this.data.phone === "" || this.data.pass === "") {
           wx.showModal({
               title: '提示',
@@ -37,7 +37,7 @@ Page({
    */
   onLoad: function (options) {
       var that =this
-      wx.getStorage({
+      wx.getStorage({  //取出存储的手机号和密码
           key: 'info',
           success: function (res) {
               console.log(res.data)
@@ -47,54 +47,5 @@ Page({
                 })
           }
       })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
   }
 })

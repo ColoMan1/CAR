@@ -1,7 +1,9 @@
 <!-- 
         =======     注册页面 
 -->
-<view class="logo"></view>
+<view class="logo">
+  <image src="../../img/LOGO.png" style="height:250rpx;width:450rpx;"></image>
+</view>
 <form bindsubmit="bindform">
   <view class="weui-cells weui-cells_after-title  input_box">
       <view class="weui-cell weui-cell_input">
@@ -14,7 +16,7 @@
               <input name="input1" type ="number" class="weui-input" placeholder="验证码" />
           </view>
           <view class="weui-cell__ft">
-              <button class="weui-btn mini-btn" type="primary" size="mini" style="color:black;background-color:#FFC12C;margin:20rpx 10rpx 0 0;" bindtap="codeTime">
+              <button class="weui-btn mini-btn" disabled="{{disabTf}}" type="primary" size="mini" style="color:black;background-color:#FFC12C;margin:20rpx 10rpx 0 0;" bindtap="codeTime">
                 <text wx:if="{{keyShow}}">{{code}}</text>
                 <text wx:else="{{keyShow}}">已发送 {{code_time}}</text>
               </button>
@@ -31,6 +33,6 @@
  <view style="position:absolute;bottom:20rpx;display:flex;justify-content:center;width:100%;">
   <label>
     <icon wx:if="{{hide}}" type="success" size="18"/>
-    <icon wx:else="{{hide}}" bindtap="clickTap1" type="circle" size="18"/><text style="font-size:26rpx;">同意《软件服务及订票协议》</text> 
+    <icon wx:else="{{hide}}" bindtap="clickTap1" type="circle" size="18"/><text style="font-size:26rpx;color:white;margin-left:10rpx;">同意《软件服务及订票协议》</text> 
   </label>
 </view>

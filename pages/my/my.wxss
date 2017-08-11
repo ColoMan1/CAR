@@ -18,13 +18,26 @@
   background-color:white;
   margin-top:100rpx;
 }
+.box1{
+  background-color:white;
+  margin-top:100rpx;
+}
 .box::after {
   content:" ";
   position:absolute;
-  top:102rpx;
+  top:101rpx;
   right:0;
-  height:1px;
   border-bottom:1rpx solid #d9d9d9;
   color:#d9d9d9;
-  left:76px;
+  left:152rpx;
+}
+.renz{
+  background: url(../../img/bg1.png)no-repeat;
+  background-size: cover;
+  height: 56rpx;
+  width: 136rpx;
+  text-align: center;
+  float: right;
+  line-height: 56rpx;
+  color: white;
 }

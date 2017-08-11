@@ -1,5 +1,7 @@
 <view class="index_bigbox">
-  <view class="top_border"></view>
+  <view class="top_border">
+    <image src="../../img/bus.png" class="img"></image>
+  </view>
   <view class="banci_center">
     <view class="banci_left">
       <view class="banci_left_top">
@@ -42,10 +44,20 @@
   </view>
   <view class="weui-cell weui-cell_input">
     <view class="weui-cell__hd">
+        <view class="weui-label">线路选择</view>
+    </view>
+    <view class="weui-cell__bd">
+        <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+            <view class="weui-input" style="text-align:right;color:#ccc;">{{date}}</view>
+        </picker>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
            <view class="weui-label">支付方式</view> 
     </view>
     <view class="weui-cell__bd" style="text-align:right;">
-       <image src="../../img/微信支付.png" style="height:60rpx;width:200rpx;"></image>
+       <image src="../../img/wxpay.png" style="height:60rpx;width:200rpx;"></image>
     </view>
   </view>
    <view class="weui-cell weui-cell_input">

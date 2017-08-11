@@ -1,9 +1,11 @@
 
 .top_border{
-  border: 1px solid red;
-  height: 600rpx;
+  height: 500rpx;
   width: 670rpx;
   margin: 0 auto;
+  background: #F6D56B;
+  text-align: center;
+  border-radius: 5px;
 }
 .banci_center{
   display: flex;
@@ -19,7 +21,7 @@
 }
 .index_bigbox{
   background-color: #F5F4F2;
-  padding: 40rpx 0 80rpx 0;
+  padding: 85rpx 0 80rpx 0;
 }
 .banci_left,.banci_right{
   display: flex;
@@ -34,4 +36,9 @@
 .banci_left_top,.banci_right_top{
   font-size: 30rpx;
   color: #ccc;
+}
+.img{
+  margin-top:-55rpx;
+  height:450rpx;
+  width:600rpx;
 }

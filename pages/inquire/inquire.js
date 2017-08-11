@@ -5,11 +5,11 @@ Page({
    */
   data: {
     navbar:["全部班次","已发车","未发车"],
-    currentTab:1,
-    topShow:true,
-    classes:[],//这里数据用数组保存
-    showIndex:1,
-    bottomShow:true
+    currentTab:1,   //顶部tab切换索引
+    topShow:true,   //数据没加载完成前block的显示判断
+    classes:[],     //这里数据用数组保存
+    showIndex:1,    //数据分页
+    bottomShow:true //上拉加载时显示正在加载
     // classes:[{
     //     star: "平湖经济开发区",
     //     end: "江苏南京",
@@ -27,7 +27,6 @@ Page({
   },
   //顶部tab点击切换
   navbarTap: function (e) {
-    console.log(e)
     this.setData({
       currentTab: e.target.dataset.idx
     })
@@ -109,7 +108,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+    console.log(1234)
   },
 
   /**

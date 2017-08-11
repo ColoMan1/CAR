@@ -30,5 +30,5 @@
   <navigator url="../pay_success/pay_success?time={{time}}">
     <button class="weui-btn" type="primary" style="background-color:#FFCE39;color:black;">确认支付</button>
   </navigator>
-  <image style="height:60rpx;width:200rpx;margin-top:30rpx;" src="../../img/微信支付.png"></image>
+  <image style="height:60rpx;width:200rpx;margin-top:30rpx;" src="../../img/wxpay.png"></image>
 </view>

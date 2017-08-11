@@ -38,7 +38,7 @@ page{
 .weui-cell::after {
   content:" ";
   position:absolute;
-  top:180rpx;
+  top:200rpx;
   right:0;
   height:1px;
   border-bottom:1rpx solid #d9d9d9;
@@ -49,4 +49,38 @@ page{
   display: flex;
   align-items: center;
   margin: 0 10rpx;     /*车站箭头时间平分布局 */
+}
+.yjd{
+  background: url(../../img/bg1.png)no-repeat;
+  background-size: cover;
+  height: 56rpx;
+  width: 136rpx;
+  text-align: center;
+  line-height: 56rpx;
+  color: white;
+  margin: 18rpx 0;
+  float: left;
+  margin-left: 30rpx;
+}
+.yfc{
+  background: url(../../img/bg3.png)no-repeat;
+  background-size: cover;
+  height: 56rpx;
+  width: 136rpx;
+  text-align: center;
+  line-height: 56rpx;
+  color: white;
+  margin: 18rpx 0;
+  float: left;
+}
+.wjd{
+  background: url(../../img/bg2.png)no-repeat;
+  background-size: cover;
+  height: 56rpx;
+  width: 136rpx;
+  text-align: center;
+  line-height: 56rpx;
+  color: white;
+  margin: 18rpx 0;
+  float: left;
 }

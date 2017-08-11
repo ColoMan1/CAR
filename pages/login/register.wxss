@@ -1,9 +1,11 @@
 /* pages/login/register.wxss */
-
+page{
+  background: url(../../img/bg4.png)no-repeat;
+  background-size: cover;
+  background-position:  0 -130rpx;
+}
 .logo{
-  background-color: blueviolet;
-  height: 250rpx;
-  width: 60%;
+  text-align: center;
   margin: 50rpx auto;
 }
 .input_box{

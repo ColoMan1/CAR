@@ -15,7 +15,7 @@
         <view style="font-weight: bold;">{{bayCarDetails_left[bayCarDetails_leftIndex]}}</view>
       </view>
     </view>
-    <image src="../../img/箭头1.png" style="height:72rpx;width:72rpx;"></image>
+    <image src="../../img/jt1.png" style="height:72rpx;width:72rpx;"></image>
     <view class="banci_right">
         <view class="banci_right_top">
           终点站
@@ -30,7 +30,7 @@
 <view style="height:180rpx;"></view>
 <!-- 司机信息 -->
 <view class="driverInfo">
-  <image src="../../img/人.png" style="margin-right:35rpx"></image>
+  <image src="../../img/ren.png" style="margin-right:35rpx"></image>
   <view class="">本趟车次驾驶员 <text style="margin-left:10rpx;">{{driver}}</text></view>
   <view class="">{{carId}}</view>
 </view>

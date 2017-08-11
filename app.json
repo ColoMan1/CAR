@@ -1,12 +1,13 @@
 {
     "pages": [
-      "pages/login/login",      
-      "pages/concel/concel",      
-      "pages/inquire/inquire",
-      "pages/inquire/bayCarDetails",
-      "pages/login/register",
-      "pages/index/index",
+      "pages/login/login",
+      
       "pages/my/my",
+      "pages/login/register",
+      "pages/inquire/inquire",   
+      "pages/concel/concel",      
+      "pages/inquire/bayCarDetails",
+      "pages/index/index",
       "pages/pay/pay",
       "pages/pay_success/pay_success",
       "pages/account/account",
@@ -35,20 +36,20 @@
       {
         "pagePath": "pages/index/index",
         "text": "预约订票",
-        "iconPath": "img/票.png",
-        "selectedIconPath": "img/票1.png"
+        "iconPath": "img/piao.png",
+        "selectedIconPath": "img/piao1.png"
       },
       {
         "pagePath": "pages/inquire/inquire",
         "text": "班次查询",
-        "iconPath": "img/记录.png",
-        "selectedIconPath": "img/记录1.png"
+        "iconPath": "img/jl.png",
+        "selectedIconPath": "img/jl1.png"
       },
       {
         "pagePath": "pages/my/my",
         "text": "我的",
-        "iconPath": "img/人.png",
-        "selectedIconPath": "img/人1.png"
+        "iconPath": "img/ren.png",
+        "selectedIconPath": "img/ren1.png"
       }
     ]
   }

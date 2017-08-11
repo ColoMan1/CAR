@@ -4,7 +4,7 @@
 -->
 
 <view class="icon-box" style="text-align:center;margin:100rpx 0 50rpx 0;">
-    <image src="../../img/叉.png" style="height:300rpx;width:300rpx;"></image>
+    <image src="../../img/x.png" style="height:300rpx;width:300rpx;"></image>
 </view>
 <view style="text-align:center;font-size:46rpx;margin: 30rpx 0;font-weight:bold;">
    取消成功

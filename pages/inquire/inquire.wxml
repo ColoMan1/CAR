@@ -31,12 +31,16 @@
                     <!-- <view class="weui-cell__bd" style="display:flex;justify-content:space-between;width:90%;">   车站箭头和时间平分布局-->
 
                     <view class="for_banci">{{item.CategoryName}}</view>
-                    <image src="../../img/箭头.png" style="height:60rpx;width:60rpx;"></image>
+                    <image src="../../img/jt.png" style="height:60rpx;width:60rpx;"></image>
                     <view class="for_banci">{{item.Title}}</view>
                     <view class="for_banci">{{item.CreateTime}}</view>
                     </view>
-                    <view class="weui-cell__bd">
-                    <image src="../../img/已结单.png" style="height:70rpx;width:60rpx;"></image>
+                    <view wx:if="{{true}}" class="weui-cell__bd">
+                      <view class="yfc">已发车</view>
+                      <view class="yjd">已截单</view>
+                    </view>
+                    <view wx:else class="weui-cell__bd">
+                      <view class="wjd">未截单</view>
                     </view>
                 </view>
                 <view class="weui-cell__ft weui-cell__ft_in-access"></view>
