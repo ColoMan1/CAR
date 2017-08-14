@@ -54,7 +54,7 @@
   </view>
   <view class="weui-cell weui-cell_input">
     <view class="weui-cell__hd">
-           <view class="weui-label">支付方式</view> 
+      <view class="weui-label">支付方式</view> 
     </view>
     <view class="weui-cell__bd" style="text-align:right;">
        <image src="../../img/wxpay.png" style="height:60rpx;width:200rpx;"></image>
@@ -65,9 +65,9 @@
           <view class="weui-label">乘车费用</view>
       </view>
       <view class="weui-cell__bd">
-          <view class="weui-input" style="text-align:right;color:#ccc;">
-            <text style="font-size:70rpx;color:black;">{{price}}</text>元
-          </view>
+        <view class="weui-input" style="text-align:right;color:#ccc;">
+          <text style="font-size:70rpx;color:black;">{{price}}</text>元
+        </view>
       </view>
   </view>
 </view>

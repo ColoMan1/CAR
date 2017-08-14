@@ -1,0 +1,80 @@
+/* pages/test/test.wxss */
+page {
+    background: url(../../img/bg5.png)no-repeat;
+    background-size: cover;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    padding-bottom: 10rpx;
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    box-sizing: border-box;
+    width: 85%;
+    margin-top: 40rpx;
+    border-radius: 10rpx;
+    background-color: #fff;
+}
+
+.header {
+    height: 140rpx;
+    background-color: #f0f0f0;
+    border-radius: 10rpx 10rpx 0 0;
+}
+
+.barcode {
+    display: flex;
+    height: 320rpx;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50rpx;
+}
+
+.barnum {
+    width: 500rpx;
+    font-size: 38rpx;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 10rpx;
+    white-space: nowrap;
+}
+
+.barcode > canvas {
+    width: 500rpx;
+    height: 200rpx;  
+}
+
+.qrcode {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.qrcode > canvas {
+    width: 520rpx;
+    height: 520rpx;
+}
+.title{
+  width: 100%;
+  height: 3rem;
+  background-color: #000000;
+  color: #f0f0f0;
+  line-height: 3rem;
+  font-size: 35rpx;
+  text-align: center;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}

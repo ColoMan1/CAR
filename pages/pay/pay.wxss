@@ -1,10 +1,11 @@
 /* pages/pay/pay.wxss */
 .pay_top{
-  border: 1px solid red;
   height: 600rpx;
-  width: 670rpx;
   margin: 0 auto;
   margin-top: 90rpx;
+  background: url(../../img/paybg.png)no-repeat;
+  background-size: cover;
+
 }
 .pay_top_top{
   text-align: center;
@@ -19,7 +20,7 @@
   justify-content: space-around;
   align-items: center;
   width: 580rpx;
-  height: 160rpx;
+  height: 250rpx;
   margin: 0 auto;
   border-radius: 5rpx;
   text-align: center;

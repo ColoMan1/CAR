@@ -3,7 +3,7 @@
 -->
 <view class="pay_top">
   <view class="pay_top_top">
-   <view class=""> 约  <text>{{topTime}}</text> 分钟后到站</view>
+   <view class=""> 司机已整装待发</view>
    <view style="font-size:30rpx;color:#F8E091;">{{carId}}</view>
   </view>
   <view class="banci_center">
@@ -30,19 +30,21 @@
 <view style="height:180rpx;"></view>
 <!-- 司机信息 -->
 <view class="driverInfo">
-  <image src="../../img/ren.png" style="margin-right:35rpx"></image>
+  <image src="../../img/sj.png"></image>
   <view class="">本趟车次驾驶员 <text style="margin-left:10rpx;">{{driver}}</text></view>
   <view class="">{{carId}}</view>
 </view>
 
 <view class="page__bd page__bd_spacing" style="padding:76rpx 30rpx 0;text-align:center;">
-  <navigator url="">
+  <!-- 查看上车码按钮 -->
+  <navigator url="../code/code?code=123adg">
     <button class="weui-btn" type="primary" style="background-color:#FFCE39;color:black;">查看上车码</button>
   </navigator>
+  <!-- 联系司机按钮 -->
   <navigator url="">
     <button class="weui-btn" type="primary" style="background-color:white;color:black;margin-top:20rpx;">联系司机</button>
   </navigator>
 </view>
-
+  <!-- 底部说明文字 -->
 <view style="width:70%;margin:20rpx auto;font-size:24rpx;color: #BDBEBD;">截单两小时前取消预约可全额退款,截单一小时前可退50%。截单后取消订单将无法获得退款</view>
 

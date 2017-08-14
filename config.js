@@ -40,7 +40,7 @@ var config = {
 
 
   //发送验证码
-  SpanCode: `http://${host}/user/validate`
+  SpanCode: `https://${host}/user/validate`
 
 };
 

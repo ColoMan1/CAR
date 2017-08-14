@@ -1,5 +1,5 @@
 // pages/login/register.js
-const SpanCode = require('../../config').SpanCode
+const SpanCode = require('../../config').SpanCode  //接口js引入
 var setTime = ''  //定时器变量定义
 var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
 Page({
@@ -48,13 +48,13 @@ Page({
     if (this.data.phoneNumber === "") { //验证手机号码是否为空
       wx.showToast({
         title: '请填写手机号码',
-        image:'../../img/叉.png'
+        image:'../../img/x.png'
       })
     } else if (!myreg.test(this.data.phoneNumber)){  //利用正则验证码手机号码是否规范
       console.log(this.data.phoneNumber)
       wx.showToast({
         title: '请填写正确的手机号码',
-        image: '../../img/叉.png'
+        image: '../../img/x.png'
       })
     }else{
       this.setData({
@@ -64,21 +64,22 @@ Page({
       this.setTime = setInterval(function () {  //倒计时定时器
         that.time1()//这里必须要把递减的逻辑写成一个函数封装出去  不能直接用this.setData
       }, 1000)
+      wx.request({  //验证码接口
+        url: SpanCode,
+        data: {
+          Type: 1,
+          PhoneNumber: this.data.phoneNumber
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/json'
+        },
+        success: function (res) {
+          console.log(res.data)
+        }
+      })
     }
-    wx.request({
-      url: SpanCode,
-      data: {
-        Type: 1,
-        PhoneNumber: this.data.phoneNumber
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        console.log(res.data)
-      }
-    })
+    
   },
   clickTap1:function(){ //底部协议点击事件
     this.setData({
@@ -124,54 +125,5 @@ Page({
    this.setData({
      phoneNumber:18755696101
    })
-  },
-  
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
   }
 })

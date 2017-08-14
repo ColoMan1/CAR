@@ -5,7 +5,7 @@ var app = getApp()
 //var common = require('../data/data.js')
 Page({
   data : {
-    date:"点击选择日期",
+    date:"点击选择",
     accounts: ["微信支付", "财付通支付", "支付宝支付"],
     accountIndex: 0,
     city_car_left: ["上海浦东", "香港", "澳大利亚", "安徽"],

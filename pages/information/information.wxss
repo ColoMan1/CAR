@@ -1,14 +1,28 @@
 /* pages/information/information.wxss */
 
+.box{
+  background-color:#FAC61D;
+  height:234rpx;
+  width:90%;
+  margin:80rpx auto 40rpx;
+  border-radius: 3px;
+}
+.infor_form image{
+  height:258rpx;
+  width:150rpx;
+  float: left;
+  margin:-60rpx 10rpx 0 30rpx;
 
-.infor_form{
-   display: flex;
-   justify-content: flex-end;
 }
 .input_box{
    background-color: none;
    margin-top:27rpx; 
-   background-color: transparent ;
+   background-color: transparent;
+   padding-top: 20rpx;
+}
+.input_box input{
+  font-size: 35rpx;
+  width: 95%;
 }
 .input_box::before{
    content: "";
@@ -26,7 +40,7 @@
     content:" ";
     position:absolute;
     bottom:0;
-    right:0;
+    right:15px;
     height:1px;
     border-bottom:1rpx solid #F5F4F2;
     color:#d9d9d9;
@@ -36,7 +50,7 @@
     content:" ";
     position:absolute;
     bottom:0;
-    right:0;
+    right:15px;
     height:1px;
     border-bottom:1rpx solid #F5F4F2;
     color:#d9d9d9;

@@ -1,20 +1,21 @@
 <!-- 
         =======     完善信息 
 -->
-<view style="background-color:#FAC61D;height:240rpx;width:90%;margin:50rpx auto;">
+<view class="box">
     <form bindsubmit="bindform" class="infor_form">
-        <view class="weui-cells weui-cells_after-title input_box">
-            <view class="weui-cell weui-cell_input input">
-                <view class="weui-cell__bd">
-                    <input name="input" type="number" class="weui-input" placeholder-style="color:white;" placeholder="您的姓名" />
-                </view>
-            </view>
-            <view class="weui-cell weui-cell_input weui-cell_vcode input2">
-                <view class="weui-cell__bd">
-                    <input name="input1" type="number" class="weui-input" placeholder-style="color:#F5F4F2;" placeholder="所在公司名称" />
-                </view>
-            </view>
-        </view>
+      <image src="../../img/man.png"></image>
+      <view class="weui-cells weui-cells_after-title input_box">
+          <view class="weui-cell weui-cell_input input">
+              <view class="weui-cell__bd">
+                  <input name="input" class="weui-input" placeholder-style="color:white;" placeholder="您的姓名" />
+              </view>
+          </view>
+          <view class="weui-cell weui-cell_input weui-cell_vcode input2">
+              <view class="weui-cell__bd">
+                  <input name="input1" class="weui-input" placeholder-style="color:#F5F4F2;" placeholder="所在公司名称" />
+              </view>
+          </view>
+      </view>
     </form>
 </view>
 
@@ -46,7 +47,7 @@
 
 <view class="weui-cells weui-cells_after-title idcar">
     <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__bd">
+        <view style="width:245rpx;">
             身份证号码
         </view>
         <view class="weui-cell__bd">

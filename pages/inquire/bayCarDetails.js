@@ -5,7 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-      topTime:30,
       bayCarDetails_left: ["上海浦东", "香港", "澳大利亚", "安徽"],
       bayCarDetails_leftIndex: 0,
       bayCarDetails_right: ["上海浦东", "香港", "澳大利亚", "安徽"],
