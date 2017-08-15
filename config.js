@@ -40,7 +40,9 @@ var config = {
 
 
   //发送验证码
-  SpanCode: `https://${host}/user/validate`
+  SpanCode: `https://${host}/user/validate`,
+  //查询已发车班次
+  inquireClasses: `https://${host}/classes/list`
 
 };
 

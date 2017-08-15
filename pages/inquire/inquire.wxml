@@ -22,18 +22,22 @@
   <!--已发车-->
   <view hidden="{{currentTab!==1}}">
     <scroll-view scroll-y="true" bindscrolltolower="scrolltolower" style="height:1026rpx;">
-        <navigator  wx:for="{{classes}}"  wx:key="" url="../inquire/bayCarDetails">
+      <block wx:for="{{classes}}"  wx:key="">
+        <navigator  wx:for="{{classes}}"  wx:key="" url="../inquire/bayCarDetails?">
             <view class="weui-panel__ft" style="background-color:white;">
                 <view class="weui-cell weui-cell_access weui-cell_link" style="">
-                <view class="weui-cell__bd">
-                    <view class="weui-cell__bd" style="display:flex;width:90%;">
+                <view class="weui-cell__bd" style="border-bottom:1rpx solid #ccc;">
+                    <view class="weui-cell__bd" style="display:flex;position:relative;">
 
                     <!-- <view class="weui-cell__bd" style="display:flex;justify-content:space-between;width:90%;">   车站箭头和时间平分布局-->
-
-                    <view class="for_banci">{{item.CategoryName}}</view>
-                    <image src="../../img/jt.png" style="height:60rpx;width:60rpx;"></image>
-                    <view class="for_banci">{{item.Title}}</view>
-                    <view class="for_banci">{{item.CreateTime}}</view>
+                    <view class="leftContent">
+                      <view class="for_banci">{{item.CategoryName}}</view>
+                      <view class="classname">
+                        <image src="../../img/jt.png" style="height:25px;width:25px;"></image>
+                      </view>
+                      <view class="for_banci">{{item.CategoryName}}</view>
+                    </view>
+                    <view class="for_banci banciTe">{{item.CategoryName}}</view>
                     </view>
                     <view wx:if="{{true}}" class="weui-cell__bd">
                       <view class="yfc">已发车</view>
@@ -47,6 +51,7 @@
                 </view>
             </view>
         </navigator>
+      </block>
       <block wx:if="{{bottomShow}}">
        <view class="weui-loadmore">
         <view class="weui-loading"></view>

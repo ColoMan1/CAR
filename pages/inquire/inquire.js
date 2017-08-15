@@ -1,5 +1,5 @@
+const inquireClasses = require('../../config').inquireClasses  //接口js引入
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -8,7 +8,7 @@ Page({
     currentTab:1,   //顶部tab切换索引
     topShow:true,   //数据没加载完成前block的显示判断
     classes:[],     //这里数据用数组保存
-    showIndex:1,    //数据分页
+    showIndex:0,    //数据分页
     bottomShow:true //上拉加载时显示正在加载
     // classes:[{
     //     star: "平湖经济开发区",
@@ -32,6 +32,45 @@ Page({
     })
   },
   //对请求数据函数进行封装
+  // requestShu: function (showIndex) {
+  //   var that = this
+  //   wx.request({
+  //     url: inquireClasses,
+  //     data: {
+  //       page: showIndex,
+  //       pageSize: 2
+  //     },
+  //     method: 'POST',
+  //     header: {
+  //       'content-type': 'application/json'
+  //     },
+  //     dataType: "json",
+  //     success: function (res) { 
+  //       for (var i in res.data.data.pageDate){
+  //         console.log(res.data.data.pageDate[i].sites)
+  //         for (var k in res.data.data.pageDate[i].sites) {
+  //           console.log(res.data.data.pageDate[i].sites[k].name)
+  //           // that.setData({
+  //           //   topShow: false,
+  //           //   classes: that.data.classes.concat(res.data.data.pageDate[i].sites[k].name),
+  //           //   showIndex: that.data.showIndex + 1
+  //           // })
+  //           if (res.data.data.pageDate.length > 0) {
+  //             that.setData({
+  //               topShow: false,
+  //               classes: that.data.classes.concat(res.data.data.pageDate[i].sites[k].name),//让后面刷新的数据用数组concat方法加在原有数据的末尾
+  //               showIndex: that.data.showIndex + 1
+  //             })
+  //           } else {
+  //             that.setData({
+  //               bottomShow: false
+  //             })
+  //           }
+  //         }
+  //       }
+        
+  //     }
+  //   })
   requestShu: function (showIndex) {
     var that = this
     wx.request({
@@ -47,6 +86,7 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
+        console.log(res.data.Data.PageData)
         if (res.data.Data.PageData.length > 0) {
           that.setData({
             topShow: false,
@@ -74,54 +114,5 @@ Page({
    */
   onLoad: function (options) {
     this.requestShu(this.data.showIndex)//对请求数据函数进行调用
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    console.log(1234)
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-    
   }
 })

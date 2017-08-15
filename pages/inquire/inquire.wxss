@@ -35,20 +35,33 @@ page{
   content:" ";
   border:0;
 }
-.weui-cell::after {
+/* .weui-cell::after {
   content:" ";
   position:absolute;
-  top:200rpx;
+  top:160rpx;
   right:0;
   height:1px;
   border-bottom:1rpx solid #d9d9d9;
   color:#d9d9d9;
   left:15px;
-}
+} */
 .for_banci{
   display: flex;
   align-items: center;
   margin: 0 10rpx;     /*车站箭头时间平分布局 */
+}
+.banciTe{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width:199rpx;
+  position:absolute;
+  right:0;
+  top:6rpx;
+}
+.leftContent{
+  width: 67%;
+  display: flex;
 }
 .yjd{
   background: url(../../img/bg1.png)no-repeat;
