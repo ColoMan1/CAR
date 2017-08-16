@@ -9,21 +9,9 @@ Page({
     topShow:true,   //数据没加载完成前block的显示判断
     classes:[],     //这里数据用数组保存
     showIndex:0,    //数据分页
-    bottomShow:true //上拉加载时显示正在加载
-    // classes:[{
-    //     star: "平湖经济开发区",
-    //     end: "江苏南京",
-    //     times: "17:30发车"
-    //   },{
-    //       star: "阿拉伯",
-    //       end: "杭州",
-    //       times: "16:23发车"
-    //   },{
-    //       star: "安徽",
-    //       end: "杭州",
-    //       times: "18:35发车"
-    //   },
-    // ]
+    bottomShow:true, //上拉加载时显示正在加载
+    offTime: true,    //截单未截单判断显示
+    resData1:[]
   },
   //顶部tab点击切换
   navbarTap: function (e) {
@@ -32,68 +20,47 @@ Page({
     })
   },
   //对请求数据函数进行封装
-  // requestShu: function (showIndex) {
-  //   var that = this
-  //   wx.request({
-  //     url: inquireClasses,
-  //     data: {
-  //       page: showIndex,
-  //       pageSize: 2
-  //     },
-  //     method: 'POST',
-  //     header: {
-  //       'content-type': 'application/json'
-  //     },
-  //     dataType: "json",
-  //     success: function (res) { 
-  //       for (var i in res.data.data.pageDate){
-  //         console.log(res.data.data.pageDate[i].sites)
-  //         for (var k in res.data.data.pageDate[i].sites) {
-  //           console.log(res.data.data.pageDate[i].sites[k].name)
-  //           // that.setData({
-  //           //   topShow: false,
-  //           //   classes: that.data.classes.concat(res.data.data.pageDate[i].sites[k].name),
-  //           //   showIndex: that.data.showIndex + 1
-  //           // })
-  //           if (res.data.data.pageDate.length > 0) {
-  //             that.setData({
-  //               topShow: false,
-  //               classes: that.data.classes.concat(res.data.data.pageDate[i].sites[k].name),//让后面刷新的数据用数组concat方法加在原有数据的末尾
-  //               showIndex: that.data.showIndex + 1
-  //             })
-  //           } else {
-  //             that.setData({
-  //               bottomShow: false
-  //             })
-  //           }
-  //         }
-  //       }
-        
-  //     }
-  //   })
   requestShu: function (showIndex) {
     var that = this
     wx.request({
-      url: 'http://123.157.241.146:9018/api/Product/GetProductList',
+      url: inquireClasses,
       data: {
-        CurrentPageIndex: showIndex,
-        PageSize: 5,
-        Useage: 2,
-        CategoryGuids: ['6531DD37-49AB-4151-8F53-A6FE00E69683']
+        page: showIndex,
+        pageSize: 5
       },
       method: 'POST',
       header: {
         'content-type': 'application/json'
       },
+      dataType: "json",
       success: function (res) {
-        console.log(res.data.Data.PageData)
-        if (res.data.Data.PageData.length > 0) {
-          that.setData({
-            topShow: false,
-            classes: that.data.classes.concat(res.data.Data.PageData),//让后面刷新的数据用数组concat方法加在原有数据的末尾
-            showIndex: that.data.showIndex + 1
-          })
-        } else {
+        // var showData = function(){
+        //   for (var i in res.data.data.pageDate) {
+        //     res.data.data.pageDate[i].carTime = res.data.data.pageDate[i].cutOffTime.substring(11, 16) //自定义一个carTime值来接收截取后的时间值
+        //     res.data.data.pageDate[i].startTime = res.data.data.pageDate[i].startCarTime.substring(11, 16) //自定义一个startTime值来接收发车截取后的时间值
+        //   }
+        //   that.setData({
+        //     topShow: false,
+        //     classes: that.data.classes.concat(res.data.data.pageDate),//让后面刷新的数据用数组concat方法加在原有数据的末尾
+        //     showIndex: that.data.showIndex + 1
+        //   })
+        // }
+        console.log(res.data.data.pageDate)
+        if (res.data.data.pageDate.length > 0) {
+          if (res.data.data.pageDate[i].cutOffStatus) {//判断截单状态
+            console.log(res.data.data.pageDate)
+            showData()
+            that.setData({
+              offTime: true
+            })
+          }else{
+            showData()
+            that.setData({
+              offTime: false
+            })
+          }
+        }
+         else {
           that.setData({
             bottomShow: false
           })

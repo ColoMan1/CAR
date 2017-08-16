@@ -57,7 +57,12 @@ page{
   width:199rpx;
   position:absolute;
   right:0;
-  top:6rpx;
+  top:13rpx;
+  color: #858584;
+}
+.jdTime{
+  margin-left:158rpx;
+  color: #858584;
 }
 .leftContent{
   width: 67%;
