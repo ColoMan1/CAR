@@ -25,11 +25,14 @@
             <view class="weui-cell__bd">
                 <view class="weui-uploader__bd">
                     <view class="weui-uploader__files" id="uploaderFiles1">
-                        <block wx:for="{{files1}}" wx:key="*this">
+                        <!-- <block wx:for="{{files1}}" wx:key="*this">
                             <view class="weui-uploader__file" bindtap="previewImage1" id="{{item}}">
                                 <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
                             </view>
-                        </block>
+                        </block> -->
+                        <view class="weui-uploader__file" bindtap="previewImage1" id="{{files1}}">
+                            <image class="weui-uploader__img" src="{{files1}}" mode="aspectFill" />
+                        </view>
                     </view>
                     <view hidden="{{hide1}}" bindtap="chooseImage1" class="weui-uploader__input-box" style="height:100rpx;width:100rpx;">
                         <view class="weui-uploader__input"></view>

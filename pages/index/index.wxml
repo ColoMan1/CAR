@@ -32,7 +32,7 @@
         <view class="weui-label">乘车时间</view>
     </view>
     <view class="weui-cell__bd">
-        <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+        <picker mode="date" value="{{date}}" fields="month" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
             <view class="weui-input" style="text-align:right;color:#ccc;">{{date}}</view>
         </picker>
     </view>
@@ -47,8 +47,8 @@
         <view class="weui-label">线路选择</view>
     </view>
     <view class="weui-cell__bd">
-        <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
-            <view class="weui-input" style="text-align:right;color:#ccc;">{{date}}</view>
+        <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+            <view class="weui-input" style="text-align:right;color:#ccc;">{{multiArray[0][multiIndex[0]]}}-{{multiArray[2][multiIndex[2]]}}</view>
         </picker>
     </view>
   </view>

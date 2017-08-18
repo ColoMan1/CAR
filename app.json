@@ -1,16 +1,19 @@
 {
     "pages": [
+            "pages/information/information",
+            "pages/index/index",
+            "pages/login/login",
+
+
+      
+      
       "pages/inquire/inquire",
-      
       "pages/code/code",
-      
-      "pages/information/information",
-      "pages/login/login",
+
       "pages/my/my",
       "pages/login/register",
       "pages/concel/concel",      
       "pages/inquire/bayCarDetails",
-      "pages/index/index",
       "pages/pay/pay",
       "pages/pay_success/pay_success",
       "pages/account/account",

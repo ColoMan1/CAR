@@ -1,6 +1,6 @@
 /* pages/test/test.wxss */
 page {
-    background: url(../../img/bg5.png)no-repeat;
+    background: url(../../img/bgg.png)no-repeat;
     background-size: cover;
 }
 

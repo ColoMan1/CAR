@@ -35,16 +35,6 @@ page{
   content:" ";
   border:0;
 }
-/* .weui-cell::after {
-  content:" ";
-  position:absolute;
-  top:160rpx;
-  right:0;
-  height:1px;
-  border-bottom:1rpx solid #d9d9d9;
-  color:#d9d9d9;
-  left:15px;
-} */
 .for_banci{
   display: flex;
   align-items: center;
@@ -54,7 +44,7 @@ page{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width:199rpx;
+  width:155rpx;
   position:absolute;
   right:0;
   top:13rpx;
@@ -65,7 +55,7 @@ page{
   color: #858584;
 }
 .leftContent{
-  width: 67%;
+  width: 75%;
   display: flex;
 }
 .yjd{
@@ -92,8 +82,8 @@ page{
   float: left;
 }
 .wjd{
-  background: url(../../img/bg2.png)no-repeat;
-  background-size: cover;
+  background: url(../../img/green.png)no-repeat;
+  background-size: cover;  
   height: 56rpx;
   width: 136rpx;
   text-align: center;

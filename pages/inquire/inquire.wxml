@@ -16,59 +16,166 @@
   </view>
   <!--全部班次-->
   <view hidden="{{currentTab!==0}}">
-    tab_01
-  </view>
+   <scroll-view scroll-y="true" bindscrolltolower="scrolltolower" style="height:1026rpx;">
+      <block wx:for="{{classes}}" wx:key="">
+        <navigator url="bayCarDetails?cutOffStatus={{item.cutOffStatus}}&startCarStatus={{item.startCarStatus}}&id={{item.classId}}&startSite={{item.startSite}}&endSite={{item.endSite}}">
+          <view class="weui-panel__ft" style="background-color:white;">
+            <view class="weui-cell weui-cell_access weui-cell_link" style="">
+              <view class="weui-cell__bd" style="border-bottom:1rpx solid #ccc;">
+                <view class="weui-cell__bd" style="display:flex;position:relative;">
 
-  <!--已发车-->
-  <view hidden="{{currentTab!==1}}">
-      <scroll-view scroll-y="true" bindscrolltolower="scrolltolower" style="height:1026rpx;">
-        <block wx:if="{{item.startCarStatus?true:fale}}" wx:for="{{classes}}"  wx:key="">
-          <navigator url="../inquire/bayCarDetails?">
-              <view class="weui-panel__ft" style="background-color:white;">
-                  <view class="weui-cell weui-cell_access weui-cell_link" style="">
-                  <view class="weui-cell__bd" style="border-bottom:1rpx solid #ccc;">
-                      <view class="weui-cell__bd" style="display:flex;position:relative;">
-
-                      <!-- <view class="weui-cell__bd" style="display:flex;justify-content:space-between;width:90%;">   车站箭头和时间平分布局-->
-                      <view class="leftContent">
-                        <view class="for_banci">{{item.startSite}}</view>
-                        <view class="classname">
-                          <image src="../../img/jt.png" style="height:25px;width:25px;"></image>
-                        </view>
-                        <view class="for_banci">{{item.endSite}}</view>
-                      </view>
-                      <view class="for_banci banciTe">{{item.startTime}}  发车</view>
-                      </view>
-                      <view wx:if="{{offTime}}" class="weui-cell__bd" style="overflow:hidden;">
-                        <view class="yfc">已发车</view>
-                        <view class="yjd">已截单</view>
-                      </view>
-                      <view wx:else class="weui-cell__bd" style="overflow:hidden;line-height:85rpx">
-                        <view class="wjd">未截单</view>
-                        <view class="jdTime">今天 {{item.carTime}} 截单</view>
-                      </view>
+                  <!-- <view class="weui-cell__bd" style="display:flex;justify-content:space-between;width:90%;">   车站箭头和时间平分布局-->
+                  <view class="leftContent">
+                    <view class="for_banci">{{item.startSite}}</view>
+                    <view class="classname">
+                      <image src="../../img/jt.png" style="height:25px;width:25px;"></image>
+                    </view>
+                    <view class="for_banci">{{item.endSite}}</view>
                   </view>
-                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                  <view class="for_banci banciTe">{{item.startTime}} 发车</view>
+                </view>
+                <block wx:if="{{item.cutOffStatus}}">
+                  <view class="weui-cell__bd" style="overflow:hidden;">
+                    <view class="yfc">已发车</view>
+                    <view class="yjd">已截单</view>
                   </view>
+                </block>
+                <block wx:else>
+                  <view class="weui-cell__bd" style="overflow:hidden;line-height:85rpx;">
+                    <view class="wjd">未截单</view>
+                    <view class="jdTime">今天 {{item.carTime}} 截单</view>
+                  </view>
+                </block>
               </view>
-          </navigator>
-        </block>
-        <block wx:if="{{bottomShow}}">
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+          </view>
+        </navigator>
+      </block>
+      <block wx:if="{{bottomShow}}">
         <view class="weui-loadmore">
           <view class="weui-loading"></view>
           <view class="weui-loadmore__tips">玩命加载中...</view>
         </view>
-      </block> 
-      <block wx:else>
+      </block>
+      <block wx:elif="{{bottomShowElse}}">
         <view class="weui-loadmore weui-loadmore_line">
-            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+          <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
         </view>
-      </block> 
-      </scroll-view>  
+      </block>
+      <block ws:eles>
+        <view></view>
+      </block>
+    </scroll-view>
+  </view>
+
+  <!--已发车-->
+  <view hidden="{{currentTab!==1}}">
+    <scroll-view scroll-y="true" bindscrolltolower="scrolltolower" style="height:1026rpx;">
+      <block wx:if="{{item.startCarStatus?false:true}}" wx:for="{{classes}}" wx:key="">
+        <navigator url="bayCarDetails?cutOffStatus={{item.cutOffStatus}}&startCarStatus={{item.startCarStatus}}&id={{item.classId}}&startSite={{item.startSite}}&endSite={{item.endSite}}">
+          <view class="weui-panel__ft" style="background-color:white;">
+            <view class="weui-cell weui-cell_access weui-cell_link" style="">
+              <view class="weui-cell__bd" style="border-bottom:1rpx solid #ccc;">
+                <view class="weui-cell__bd" style="display:flex;position:relative;">
+
+                  <!-- <view class="weui-cell__bd" style="display:flex;justify-content:space-between;width:90%;">   车站箭头和时间平分布局-->
+                  <view class="leftContent">
+                    <view class="for_banci">{{item.startSite}}</view>
+                    <view class="classname">
+                      <image src="../../img/jt.png" style="height:25px;width:25px;"></image>
+                    </view>
+                    <view class="for_banci">{{item.endSite}}</view>
+                  </view>
+                  <view class="for_banci banciTe">{{item.startTime}} 发车</view>
+                </view>
+                <block wx:if="{{item.cutOffStatus}}">
+                  <view class="weui-cell__bd" style="overflow:hidden;">
+                    <view class="yfc">已发车</view>
+                    <view class="yjd">已截单</view>
+                  </view>
+                </block>
+                <block wx:else>
+                  <view class="weui-cell__bd" style="overflow:hidden;line-height:85rpx">
+                    <view class="wjd">未截单</view>
+                    <view class="jdTime">今天 {{item.carTime}} 截单</view>
+                  </view>
+                </block>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+          </view>
+        </navigator>
+      </block>
+      <block wx:if="{{bottomShow}}">
+        <view class="weui-loadmore">
+          <view class="weui-loading"></view>
+          <view class="weui-loadmore__tips">玩命加载中...</view>
+        </view>
+      </block>
+      <block wx:elif="{{bottomShowElse}}">
+        <view class="weui-loadmore weui-loadmore_line">
+          <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+        </view>
+      </block>
+      <block ws:eles>
+        <view></view>
+      </block>
+    </scroll-view>
   </view>
 
   <!--未发车-->
   <view hidden="{{currentTab!==2}}">
-    tab_03
+    <scroll-view scroll-y="true" bindscrolltolower="scrolltolower" style="height:1026rpx;">
+      <block wx:if="{{item.startCarStatus?true:false}}" wx:for="{{classes}}" wx:key="">
+        <navigator url="bayCarDetails?cutOffStatus={{item.cutOffStatus}}&startCarStatus={{item.startCarStatus}}&id={{item.classId}}&startSite={{item.startSite}}&endSite={{item.endSite}}">
+          <view class="weui-panel__ft" style="background-color:white;">
+            <view class="weui-cell weui-cell_access weui-cell_link" style="">
+              <view class="weui-cell__bd" style="border-bottom:1rpx solid #ccc;">
+                <view class="weui-cell__bd" style="display:flex;position:relative;">
+
+                  <!-- <view class="weui-cell__bd" style="display:flex;justify-content:space-between;width:90%;">   车站箭头和时间平分布局-->
+                  <view class="leftContent">
+                    <view class="for_banci">{{item.startSite}}</view>
+                    <view class="classname">
+                      <image src="../../img/jt.png" style="height:25px;width:25px;"></image>
+                    </view>
+                    <view class="for_banci">{{item.endSite}}</view>
+                  </view>
+                  <view class="for_banci banciTe">{{item.startTime}} 发车</view>
+                </view>
+                <block wx:if="{{item.cutOffStatus}}">
+                  <view class="weui-cell__bd" style="overflow:hidden;">
+                    <view class="yfc">已发车</view>
+                    <view class="yjd">已截单</view>
+                  </view>
+                </block>
+                <block wx:else>
+                  <view class="weui-cell__bd" style="overflow:hidden;line-height:85rpx">
+                    <view class="wjd">未截单</view>
+                    <view class="jdTime">今天 {{item.carTime}} 截单</view>
+                  </view>
+                </block>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+          </view>
+        </navigator>
+      </block>
+      <block wx:if="{{bottomShow}}">
+        <view class="weui-loadmore">
+          <view class="weui-loading"></view>
+          <view class="weui-loadmore__tips">玩命加载中...</view>
+        </view>
+      </block>
+      <block wx:elif="{{bottomShowElse}}">
+        <view class="weui-loadmore weui-loadmore_line">
+          <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+        </view>
+      </block>
+      <block ws:eles>
+        <view></view>
+      </block>
+    </scroll-view>
   </view>
 </block>

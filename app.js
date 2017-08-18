@@ -22,8 +22,10 @@ App({
                 code: cod.code
               },
               success: function (res) {
+                wx.setStorageSync('HPcar', res.data.data.weChartID)
+                
                 console.log(res.data)
-                wx.setStorageSync('jianzb_id', res.data.weChartId)
+                
                // console.log(res.data.Data.Oper)
                 // if (res.data.Data.Oper) {
                 //   wx.setStorageSync('jianzb_uid', res.data.Data.Oper.Id)

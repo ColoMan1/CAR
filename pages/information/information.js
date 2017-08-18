@@ -1,11 +1,12 @@
 // pages/information/information.js
+const uploadImage = require('../../config').uploadImage  //接口js引入
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    files1: [],
+    files1: "", //这里设成数组是为了储存多张图片，wxhtml也做成了循环，但这里只需一张图，所以下面封装的函数里面把数组的concat（）方法去掉了
     files2: [],
     files3:[],
     hide1: "",
@@ -24,21 +25,39 @@ Page({
           timeX: e.detail.value
       })
   },
-  chooseImage1: function (e) {
-      var that = this;
-      wx.chooseImage({
-          sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-          sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+  choseImageFn: function (failSome) {  //failSome存储变量   someOne选择图片完成前的十字架
+    var that = this;
+    wx.chooseImage({
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        that.setData({
+          //failSome: that.data.failSome.concat(res.tempFilePaths)  //用于存多张
+          failSome:res.tempFilePaths
+        });
+        var tempFilePaths = res.tempFilePaths
+        that.setData({
+          hide1: true
+        });
+        wx.uploadFile({
+          url: uploadImage,
+          filePath: tempFilePaths[0],
+          name: 'file',
+          header: { "Content-Type": "multipart/form-data" },
           success: function (res) {
-              // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-              that.setData({
-                  files1: that.data.files1.concat(res.tempFilePaths)
-              });
-              that.setData({
-                    hide1:true
-              });
+            console.log(res)
+          },
+          fail: function (e) {
+            sonsole.log(e)
           }
-      })
+        })
+      }
+    })
+  },
+  chooseImage1: function (e){
+    this.choseImageFn(this.data.files1)
+    console.log(this.data.files1)
   },
   previewImage1: function (e) {
       wx.previewImage({
@@ -94,55 +113,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
-  },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
   }
 })
