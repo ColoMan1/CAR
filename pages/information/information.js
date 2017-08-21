@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    files1: "", //这里设成数组是为了储存多张图片，wxhtml也做成了循环，但这里只需一张图，所以下面封装的函数里面把数组的concat（）方法去掉了
+    files1: [], //这里设成数组是为了储存多张图片，wxhtml也做成了循环，但这里只需一张图，所以下面封装的函数里面把数组的concat（）方法去掉了
     files2: [],
     files3:[],
     hide1: "",
@@ -25,39 +25,37 @@ Page({
           timeX: e.detail.value
       })
   },
-  choseImageFn: function (failSome) {  //failSome存储变量   someOne选择图片完成前的十字架
-    var that = this;
-    wx.chooseImage({
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        that.setData({
-          //failSome: that.data.failSome.concat(res.tempFilePaths)  //用于存多张
-          failSome:res.tempFilePaths
-        });
-        var tempFilePaths = res.tempFilePaths
-        that.setData({
-          hide1: true
-        });
+    uploadImageFn: function (tempFile) {   //图片上传函数
         wx.uploadFile({
           url: uploadImage,
-          filePath: tempFilePaths[0],
+          filePath: tempFile[0],
           name: 'file',
           header: { "Content-Type": "multipart/form-data" },
-          success: function (res) {
-            console.log(res)
-          },
-          fail: function (e) {
-            sonsole.log(e)
-          }
+            success: function (res) {
+                console.log(res)
+            },
+            fail: function (e) {
+                sonsole.log(e)
+            }
         })
-      }
-    })
-  },
+   },
   chooseImage1: function (e){
-    this.choseImageFn(this.data.files1)
-    console.log(this.data.files1)
+    var that = this;
+    wx.chooseImage({
+        sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        success: function (res, failSome) {
+            // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+            that.setData({
+                files1: that.data.files1.concat(res.tempFilePaths)  //用于存多张
+            });
+            var tempFilePaths = res.tempFilePaths
+            that.setData({
+                hide1: true
+            });
+            that.uploadImageFn(tempFilePaths)
+        }
+    })
   },
   previewImage1: function (e) {
       wx.previewImage({
@@ -78,6 +76,8 @@ Page({
               that.setData({
                   hide2: true
               });
+              var tempFilePaths1 = res.tempFilePaths
+              that.uploadImageFn(tempFilePaths1)
           }
       })
   },
@@ -100,6 +100,8 @@ Page({
               that.setData({
                   hide3: true
               });
+              var tempFilePaths2 = res.tempFilePaths
+              that.uploadImageFn(tempFilePaths2)
           }
       })
   },

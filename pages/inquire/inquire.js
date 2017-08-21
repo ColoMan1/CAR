@@ -29,7 +29,8 @@ Page({
       },
       method: 'POST',
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'Cookie': 'weChartID=dfa42e18f3174c27a3986f964afe4c1'
       },
       dataType: "json",
       success: function (res) {
@@ -74,12 +75,14 @@ Page({
   },
   //下拉监听事件
   onPullDownRefresh:function(e){
+      wx.startPullDownRefresh()
     this.requestShu(this.data.showIndex)//对请求数据函数进行调用
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      wx.startPullDownRefresh()
     this.requestShu(this.data.showIndex)//对请求数据函数进行调用
   }
 })

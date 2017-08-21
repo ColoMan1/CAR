@@ -1,61 +1,56 @@
 {
     "pages": [
-            "pages/information/information",
-            "pages/index/index",
-            "pages/login/login",
-
-
-      
-      
-      "pages/inquire/inquire",
-      "pages/code/code",
-
-      "pages/my/my",
-      "pages/login/register",
-      "pages/concel/concel",      
-      "pages/inquire/bayCarDetails",
-      "pages/pay/pay",
-      "pages/pay_success/pay_success",
-      "pages/account/account",
-      "pages/alter_phone/alter_phone",
-      "pages/my_yy/my_yy",
-      "pages/my_xc/my_xc",
-      "pages/alter_password/alter_password",
-      "pages/alter_password/new_password",
-      "pages/alter_password/new_password_success",
-      "pages/alter_phone/alter_success",
-      "pages/concel/concel_success"
+        "pages/inquire/inquire",
+        "pages/information/information",
+        "pages/index/index",
+        "pages/login/login",
+        "pages/code/code",
+        "pages/my/my",
+        "pages/login/register",
+        "pages/concel/concel",
+        "pages/inquire/bayCarDetails",
+        "pages/pay/pay",
+        "pages/pay_success/pay_success",
+        "pages/account/account",
+        "pages/alter_phone/alter_phone",
+        "pages/my_yy/my_yy",
+        "pages/my_xc/my_xc",
+        "pages/alter_password/alter_password",
+        "pages/alter_password/new_password",
+        "pages/alter_password/new_password_success",
+        "pages/alter_phone/alter_success",
+        "pages/concel/concel_success"
     ],
-  "window":{
-    "backgroundTextStyle":"dark",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "",
-    "navigationBarTextStyle":"black",
-    "enablePullDownRefresh":true
-  },
-  "tabBar": {
-    "backgroundColor": "white",
-    "selectedColor": "#FDA836",
-    "borderStyle": "#FBF4DC",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "预约订票",
-        "iconPath": "img/piao.png",
-        "selectedIconPath": "img/piao1.png"
-      },
-      {
-        "pagePath": "pages/inquire/inquire",
-        "text": "班次查询",
-        "iconPath": "img/jl.png",
-        "selectedIconPath": "img/jl1.png"
-      },
-      {
-        "pagePath": "pages/my/my",
-        "text": "我的",
-        "iconPath": "img/ren.png",
-        "selectedIconPath": "img/ren1.png"
-      }
-    ]
-  }
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "",
+        "navigationBarTextStyle": "black",
+        "enablePullDownRefresh": true
+    },
+    "tabBar": {
+        "backgroundColor": "white",
+        "selectedColor": "#FDA836",
+        "borderStyle": "#FBF4DC",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "预约订票",
+                "iconPath": "img/piao.png",
+                "selectedIconPath": "img/piao1.png"
+            },
+            {
+                "pagePath": "pages/inquire/inquire",
+                "text": "班次查询",
+                "iconPath": "img/jl.png",
+                "selectedIconPath": "img/jl1.png"
+            },
+            {
+                "pagePath": "pages/my/my",
+                "text": "我的",
+                "iconPath": "img/ren.png",
+                "selectedIconPath": "img/ren1.png"
+            }
+        ]
+    }
 }
