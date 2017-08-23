@@ -10,13 +10,7 @@ var app = getApp()
 var gatherData = '';
 Page({
   data : {
-    date:"点击选择",
-    LeftArray: [['今天','明天'],[]],
-    LeftIndex: [0,0],
-    city_car_right: ["上海浦东", "香港", "澳大利亚", "安徽"],
-    city_car_rightIndex: 1,
     price: app.globalData.price,
-    condition:false,
     one: [],
     one1: "",
     two: [],
@@ -25,13 +19,9 @@ Page({
     three1: '',
     value: [0, 0, 0],
     values: [0, 0, 0],
+    bayCarTime:"请先选择班次"
   },
   //事件处理函数
-  bindDateChange: function (e) {
-    this.setData({
-      date: e.detail.value
-    })
-  },
   open: function () {
     this.setData({
       condition: !this.data.condition
@@ -65,7 +55,6 @@ Page({
     this.setData({
       jieguo: {}
     });
-    console.log(this.data.jieguo);
   },
   //确认按钮
   queren: function () {
@@ -83,30 +72,34 @@ Page({
   bindChange:function(e){
     var val = e.detail.value
     var t = this.data.values;
-    console.log(gatherData)
-
+    this.setData({
+        bayCarTime: gatherData[val[1]].createTime
+    })
     if (val[1] != t[1]) {
-      console.log('two no');
-      const three = [];
+      const arr = [];
 
       for (let i = 0; i < gatherData[val[1]].endSite.length; i++) {
-        three.push(gatherData[val[1]].endSite[i].name)
+        arr.push(gatherData[val[1]].endSite[i].name)
       }
-      console.log(val[1])
+    console.log(this.data.three1)
       this.setData({
         two1: this.data.two[val[1]],
-        three1: gatherData[val[1]].endSite[val[2]].name,
-        three: three,
-        values: val,
-        value: [val[0], val[1], 0]
+        three1: gatherData[val[1]].endSite[0].name,   
+         //gatherData[val[1]].endSite[val[2]].name这是之前错误的写法，纠结了半天问题在于之前错误的写法endSite[val[2]]如果用户第一次
+        // 选择了出发站中第二个或者更靠后的终点站然后又重新选择了一个出发站，但这个出发站只有一个终点站，但此时endSite[val[2]]保存
+        // 的还是上次选择的index顺序，就会出现name    undefined的错误，直接改成endSite[0]后每次重新赋值时都是从第一个开始，
+        // 就是index从0开始
+        three: arr,
+        values: val
       })
       return;
     }
+
     if (val[2] != t[2]) {
       console.log('three no');
       this.setData({
-        three1: this.data.three[val[2]],
-        values: val
+          three1: this.data.three[val[2]],
+          values: val
       })
       return;
     }
@@ -132,19 +125,17 @@ Page({
         const three = [];
 
         for (let i = 0; i < gatherData.length; i++) {
-          two.push(gatherData[i].name);
+          two.push(gatherData[i].name);            //取到所有初始化的出发站
         }
         for (let i = 0; i < gatherData[0].endSite.length; i++) {
-          three.push(gatherData[0].endSite[i].name);
+            three.push(gatherData[0].endSite[i].name); //取到所有初始化的终点站
         }
-        console.log(three)
         that.setData({
           one:one,
           two:two,
           three:three,
-          one1: gatherData[0].name,
           two1: gatherData[0].name,
-          three1: gatherData[0].endSite[0].name   //每列的第一个值
+          three1: gatherData[0].endSite[0].name
         })
       }
     })

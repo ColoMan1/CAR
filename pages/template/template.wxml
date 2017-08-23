@@ -1,3 +1,10 @@
+<!-- 
+
+选择站点模板 
+
+-->
+
+
 <template name="cascade">
   <view class="cascade_box" animation="{{animationData}}">
   <view class="cascade_hei"></view>
