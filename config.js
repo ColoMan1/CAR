@@ -46,7 +46,7 @@ var config = {
   //用户注册
   userInfoLogin: `https://${host}/user/insert`,
   //选择站点
-  choseSite: `https://${host}/weChart/site`,
+  choseSite: `https://${host}/weChart/choose`,
   //选择下单的班次
   choseClasse: `https://${host}/classes/getClasses`,
   //班次详情

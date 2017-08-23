@@ -80,16 +80,16 @@ Page({
       // }),
 
       //var weChartID = wx.getStorageSync('HPcar_id')
-    wx.getStorage({
-      key: 'HPcar',
-      success: function (res) {
-        that.setData({
-          HPcar_id: res.data
-        })
-      },
-      fail:function(res) {
-        console.log(res)
-      }
-    })
+    // wx.getStorage({
+    //   key: 'HPcar',
+    //   success: function (res) {
+    //     that.setData({
+    //       HPcar_id: res.data
+    //     })
+    //   },
+    //   fail:function(res) {
+    //     console.log(res)
+    //   }
+    // })
   }
 })

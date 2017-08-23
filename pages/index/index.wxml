@@ -7,20 +7,28 @@
       <view class="banci_left_top">
         出发站
       </view>
-      <view class="banci_left_bottom">
-        <picker bindchange="bindCitycarChange_left" value="{{city_car_leftIndex}}" range="{{city_car_left}}">
+      <view class="banci_left_bottom" bindtap="open">
+        <!-- <picker bindchange="bindCitycarChange_left" value="{{city_car_leftIndex}}" range="{{city_car_left}}">
           <view class="">{{city_car_left[city_car_leftIndex]}}</view>
-        </picker>
+        </picker> -->
+        <!-- <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+            <view class="weui-input">{{multiArray[1][multiIndex[1]]}}</view>
+        </picker> -->
+        {{two1}}
       </view>
     </view>
     <view class="banci_right">
         <view class="banci_right_top">
           终点站
         </view>
-        <view class="banci_right_bottom">
-          <picker bindchange="bindCitycarChange_right" value="{{city_car_rightIndex}}" range="{{city_car_right}}">
-            <view class="">{{city_car_right[city_car_rightIndex]}}</view>
-          </picker>
+        <view class="banci_right_bottom" bindtap="open">
+          <!-- <picker bindchange="bindCitycarChange_right" value="{{city_car_rightIndex}}" range="{{city_car_right}}">
+            <view class="">{{multiArray[2][multiIndex[2]]}}</view>
+          </picker> -->
+           <!-- <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+              <view class="weui-input">{{multiArray[2][multiIndex[2]]}}</view>
+          </picker> -->
+          {{three1}}
         </view>
     </view>
   </view>
@@ -48,7 +56,7 @@
     </view>
     <view class="weui-cell__bd">
         <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-            <view class="weui-input" style="text-align:right;color:#ccc;">{{multiArray[0][multiIndex[0]]}}-{{multiArray[2][multiIndex[2]]}}</view>
+            <view class="weui-input" style="text-align:right;color:#ccc;">{{multiArray[1][multiIndex[1]]}}-{{multiArray[2][multiIndex[2]]}}</view>
         </picker>
     </view>
   </view>
@@ -77,3 +85,34 @@
     <button class="weui-btn" type="primary" style="background-color:#FFCE39;color:black;">立即预约</button>
   </navigator>
 </view>
+
+
+
+
+
+<!-- <view class="container">
+  <view class="input">
+    <input placeholder="选择" value="{{one1}}-{{two1}}-{{three1}}" focus="{{focus}}" bindfocus="open" />
+  </view>
+</view>
+<view wx:if="{{condition}}" class="citypicker">
+  <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange" class="citybody">
+    <view class="cityheader">
+      <view bindtap="open" class="city-cancel">取消</view>
+      <view bindtap="open" class="city-true">确定</view>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{one}}" wx:key="item" style="line-height: 50px;">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{two}}" wx:key="item" style="line-height: 50px;">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{three}}" wx:key="item" style="line-height: 50px;">{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view> -->
+
+<import src="../template/template.wxml"/>
+
+<template is="cascade" data="{{animationData:animationData,one:one,two:two,three:three}}"/>

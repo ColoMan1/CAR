@@ -1,119 +1,151 @@
 //index.js
-const choseSite = require('../../config').choseSite  //接口js引入
-const choseClasse = require('../../config').choseClasse  //接口js引入
-const inquireClasses = require('../../config').inquireClasses  //接口js引入
-const classDetails = require('../../config').classDetails  //接口js引入
-const createOrder = require('../../config').createOrder  //接口js引入
-const carPay = require('../../config').carPay  //接口js引入
-const queryTrip = require('../../config').queryTrip  //接口js引入
+const choseSite = require('../../config').choseSite  //选择站点
+const choseClasse = require('../../config').choseClasse  //选择下单的班次
+const inquireClasses = require('../../config').inquireClasses  //查询已发车班次
+const classDetails = require('../../config').classDetails  //班次详情
+const createOrder = require('../../config').createOrder  //生成订单路线
+const carPay = require('../../config').carPay  //微信调用付款
+const queryTrip = require('../../config').queryTrip  //分布查询我的预约和行程
 var app = getApp()
-//var common = require('../data/data.js')
+var gatherData = '';
 Page({
   data : {
     date:"点击选择",
-    city_car_left: ["上海浦东", "香港", "澳大利亚", "安徽"],
-    city_car_leftIndex: 0,
+    LeftArray: [['今天','明天'],[]],
+    LeftIndex: [0,0],
     city_car_right: ["上海浦东", "香港", "澳大利亚", "安徽"],
     city_car_rightIndex: 1,
     price: app.globalData.price,
-    multiArray: [['上海浦东', '浙江平湖'], ['今天', '明天'], ['杭州滨江', '浙江温州','江南皮革厂']],
-    multiIndex: [0, 0, 0]
+    condition:false,
+    one: [],
+    one1: "",
+    two: [],
+    two1: "",
+    three: [],
+    three1: '',
+    value: [0, 0, 0],
+    values: [0, 0, 0],
   },
-  bindMultiPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      multiIndex: e.detail.value
-    })
-  },
-  bindMultiPickerColumnChange: function (e) {
-    console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
-    var data = {
-      multiArray: this.data.multiArray,
-      multiIndex: this.data.multiIndex
-    };
-    data.multiIndex[e.detail.column] = e.detail.value;
-    switch (e.detail.column) {
-      case 0:
-        switch (data.multiIndex[0]) {
-          case 0:
-            data.multiArray[1] = ['今天', '明天'];
-            data.multiArray[2] = ['杭州滨江', '浙江温州', '江南皮革厂'];
-            break;
-          case 1:
-            data.multiArray[1] = ['今天', '明天'];
-            data.multiArray[2] = ['浙江台州', '安徽黄山'];
-            break;
-        }
-        data.multiIndex[1] = 0;
-        data.multiIndex[2] = 0;
-        break;
-      case 1:
-        switch (data.multiIndex[0]) {
-          case 0:
-            switch (data.multiIndex[1]) {
-              case 0:
-                data.multiArray[2] = ['杭州滨江', '浙江温州', '江南皮革厂', '安徽皮革厂', '四川皮革厂'];
-                break;
-              case 1:
-                data.multiArray[2] = ['湖北皮革厂', '浙江温州', '江南皮革厂', '安徽皮革厂', '四川皮革厂'];
-                break;
-            }
-            break;
-          case 1:
-            switch (data.multiIndex[1]) {
-              case 0:
-                data.multiArray[2] = ['云南丽江', '浙江温州', '江南皮革厂', '安徽皮革厂', '四川皮革厂'];
-                break;
-              case 1:
-                data.multiArray[2] = ['香港', '浙江温州', '江南皮革厂', '安徽皮革厂', '四川皮革厂'];
-                break;
-            }
-            break;
-        }
-        data.multiIndex[2] = 0;
-        console.log(data.multiIndex);
-        break;
-    }
-    this.setData(data);
-  },
-  
   //事件处理函数
   bindDateChange: function (e) {
     this.setData({
       date: e.detail.value
     })
   },
-  bindCitycarChange_left: function (e) {
+  open: function () {
     this.setData({
-      city_car_leftIndex: e.detail.value
+      condition: !this.data.condition
     })
-  }, 
-  bindCitycarChange_right: function (e) {
+    //这里写了一个动画，让其高度变为满屏
+    var animation = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease',
+    })
+    this.animation = animation
+    animation.height(1232 + 'rpx').step()
     this.setData({
-      city_car_rightIndex: e.detail.value
+      animationData: animation.export()
     })
+
+  },
+  //取消按钮
+  quxiao: function () {
+    　　　　//这里也是动画，然其高度变为0
+    var animation = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease',
+    })
+
+    this.animation = animation
+    animation.height(0 + 'rpx').step()
+    this.setData({
+      animationData: animation.export()
+    });
+    　　　　//取消不传值，这里就把jieguo 的值赋值为{}
+    this.setData({
+      jieguo: {}
+    });
+    console.log(this.data.jieguo);
+  },
+  //确认按钮
+  queren: function () {
+    　　　//一样是动画，级联选择页消失，效果和取消一样
+    var animation = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease',
+    })
+    this.animation = animation
+    animation.height(0 + 'rpx').step()
+    this.setData({
+      animationData: animation.export()
+    });
+  },
+  bindChange:function(e){
+    var val = e.detail.value
+    var t = this.data.values;
+    console.log(gatherData)
+
+    if (val[1] != t[1]) {
+      console.log('two no');
+      const three = [];
+
+      for (let i = 0; i < gatherData[val[1]].endSite.length; i++) {
+        three.push(gatherData[val[1]].endSite[i].name)
+      }
+      console.log(val[1])
+      this.setData({
+        two1: this.data.two[val[1]],
+        three1: gatherData[val[1]].endSite[val[2]].name,
+        three: three,
+        values: val,
+        value: [val[0], val[1], 0]
+      })
+      return;
+    }
+    if (val[2] != t[2]) {
+      console.log('three no');
+      this.setData({
+        three1: this.data.three[val[2]],
+        values: val
+      })
+      return;
+    }
   },
   onLoad: function () {
     var that = this
-    var value1 = wx.getStorageSync('HPcar')
-    
     wx.request({
-      url: queryTrip,
+      url: choseSite,
       data: {
-        "page": 0,		  //第几页从0开始
-        "pageSize": 5,                  //每页几个
-        "finishStatus": 1                //1表示我的行程0表示我的预约
+
       },
       method: "POST",
       header: {
         'content-type': 'application/json',
-        'Cookie':'weChartID=dfa42e18f3174c27a3986f964afe4c14'
+        'Cookie':'weChartID=d18f941b72fa464fba6f34b29018fd76'
       },
       success: function (res) {
-        console.log(res.data)
-      },
-      fail:function(res) { 
-        console.log(res)
+        console.log(res.data.data.tomorrow)  
+        gatherData = res.data.data.tomorrow
+
+        const one = [];
+        const two = [];
+        const three = [];
+
+        for (let i = 0; i < gatherData.length; i++) {
+          two.push(gatherData[i].name);
+        }
+        for (let i = 0; i < gatherData[0].endSite.length; i++) {
+          three.push(gatherData[0].endSite[i].name);
+        }
+        console.log(three)
+        that.setData({
+          one:one,
+          two:two,
+          three:three,
+          one1: gatherData[0].name,
+          two1: gatherData[0].name,
+          three1: gatherData[0].endSite[0].name   //每列的第一个值
+        })
       }
     })
   }
