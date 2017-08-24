@@ -36,7 +36,6 @@ Page({
     this.setData({
       animationData: animation.export()
     })
-
   },
   //取消按钮
   quxiao: function () {
@@ -72,25 +71,45 @@ Page({
   bindChange:function(e){
     var val = e.detail.value
     var t = this.data.values;
-    this.setData({
-        bayCarTime: gatherData[val[1]].createTime
-    })
+    // this.setData({
+    //     bayCarTime: gatherData[val[0]].data[val[1]].createTime
+    // })
+    if(val[0] != t[0]){
+      const two = [];
+      const three = [];
+    val[1] = 0;
+      for (let i = 0; i < gatherData[val[0]].data.length; i++) {
+        two.push(gatherData[val[0]].data[i].name)
+      }
+      for (let i = 0; i < gatherData[val[0]].data[val[1]].endSite.length; i++) {
+        three.push(gatherData[val[0]].data[val[1]].endSite[i].name)
+      }
+      this.setData({
+        one1: gatherData[val[0]].name,
+        two1: gatherData[val[0]].data[val[1]].name,
+        two:two,
+        three1: gatherData[val[0]].data[val[1]].endSite[val[2]].name,
+        three: three,
+        values: val,
+        value: [val[0], 0, 0]
+      })
+    }
     if (val[1] != t[1]) {
       const arr = [];
 
-      for (let i = 0; i < gatherData[val[1]].endSite.length; i++) {
-        arr.push(gatherData[val[1]].endSite[i].name)
+      for (let i = 0; i < gatherData[val[0]].data[val[1]].endSite.length; i++) {
+        arr.push(gatherData[val[0]].data[val[1]].endSite[i].name)
       }
-    console.log(this.data.three1)
       this.setData({
-        two1: this.data.two[val[1]],
-        three1: gatherData[val[1]].endSite[0].name,   
+        two1: this.data.two[val[0]],
+        three1: gatherData[val[0]].data[val[1]].endSite[0].name,
          //gatherData[val[1]].endSite[val[2]].name这是之前错误的写法，纠结了半天问题在于之前错误的写法endSite[val[2]]如果用户第一次
         // 选择了出发站中第二个或者更靠后的终点站然后又重新选择了一个出发站，但这个出发站只有一个终点站，但此时endSite[val[2]]保存
         // 的还是上次选择的index顺序，就会出现name    undefined的错误，直接改成endSite[0]后每次重新赋值时都是从第一个开始，
         // 就是index从0开始
         three: arr,
-        values: val
+        values: val,
+        value: [val[0], val[1], 0]
       })
       return;
     }
@@ -98,8 +117,8 @@ Page({
     if (val[2] != t[2]) {
       console.log('three no');
       this.setData({
-          three1: this.data.three[val[2]],
-          values: val
+        three1: gatherData[val[0]].data[val[1]].endSite[val[2]].name,
+        values: val
       })
       return;
     }
@@ -117,27 +136,43 @@ Page({
         'Cookie':'weChartID=d18f941b72fa464fba6f34b29018fd76'
       },
       success: function (res) {
-        console.log(res.data.data.tomorrow)  
-        gatherData = res.data.data.tomorrow
+        console.log(res.data.data)  
+        gatherData = res.data.data
 
         const one = [];
         const two = [];
         const three = [];
-
-        for (let i = 0; i < gatherData.length; i++) {
-          two.push(gatherData[i].name);            //取到所有初始化的出发站
+        if (gatherData.length == 1){
+          wx.showModal({
+            title: '温馨提示',
+            content: '今天所有班次已全部截单，明天的班次仍可下单',
+            success: function (res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
+          })
         }
-        for (let i = 0; i < gatherData[0].endSite.length; i++) {
-            three.push(gatherData[0].endSite[i].name); //取到所有初始化的终点站
+          for (let i = 0; i < gatherData.length; i++) {
+            one.push(gatherData[i].name);
+          }
+          for (let i = 0; i < gatherData[0].data.length; i++) {
+            two.push(gatherData[0].data[i].name);    //取到所有初始化的出发站
+          }
+          for (let i = 0; i < gatherData[0].data[0].endSite.length; i++) {
+            three.push(gatherData[0].data[0].endSite[i].name); //取到所有初始化的终点站
+          }
+          that.setData({
+            one: one,
+            two: two,
+            three: three,
+            one1: gatherData[0].name,
+            two1: gatherData[0].data[0].name,
+            three1: gatherData[0].data[0].endSite[0].name
+          })
         }
-        that.setData({
-          one:one,
-          two:two,
-          three:three,
-          two1: gatherData[0].name,
-          three1: gatherData[0].endSite[0].name
-        })
-      }
     })
   }
 })

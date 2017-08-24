@@ -1,3 +1,5 @@
+
+
 <view class="index_bigbox">
   <view class="top_border">
     <image src="../../img/bus.png" class="img"></image>
@@ -83,33 +85,10 @@
   </navigator>
 </view>
 
+<!-- 
 
+选择班次模板 
 
-
-
-<!-- <view class="container">
-  <view class="input">
-    <input placeholder="选择" value="{{one1}}-{{two1}}-{{three1}}" focus="{{focus}}" bindfocus="open" />
-  </view>
-</view>
-<view wx:if="{{condition}}" class="citypicker">
-  <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange" class="citybody">
-    <view class="cityheader">
-      <view bindtap="open" class="city-cancel">取消</view>
-      <view bindtap="open" class="city-true">确定</view>
-    </view>
-    <picker-view-column>
-      <view wx:for="{{one}}" wx:key="item" style="line-height: 50px;">{{item}}</view>
-    </picker-view-column>
-    <picker-view-column>
-      <view wx:for="{{two}}" wx:key="item" style="line-height: 50px;">{{item}}</view>
-    </picker-view-column>
-    <picker-view-column>
-      <view wx:for="{{three}}" wx:key="item" style="line-height: 50px;">{{item}}</view>
-    </picker-view-column>
-  </picker-view>
-</view> -->
-
+-->
 <import src="../template/template.wxml"/>
-
-<template is="cascade" data="{{animationData:animationData,one:one,two:two,three:three}}"/>
+<template is="cascade" data="{{animationData:animationData,one:one,two:two,three:three,value:value}}"/>
