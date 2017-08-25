@@ -7,23 +7,43 @@
 
 <template name="cascade">
   <view class="cascade_box" animation="{{animationData}}">
-  <view class="cascade_hei"></view>
-   <view class="cascade_find">
-        <view class="cascade_header">
-            <text class='quxiao' catchtap="quxiao">取消</text>
-            <text class="queren" catchtap="queren">确认</text>
-        </view>
-        <picker-view indicator-style="height: 80rpx;" style="width: 100%; height: 400rpx;" bindchange="bindChange" value="{{value}}">
-            <picker-view-column>
-            <view wx:for="{{one}}" wx:key='this' style="line-height: 80rpx;text-align:center;">{{item}}</view>
-            </picker-view-column>
-            <picker-view-column>
-            <view wx:for="{{two}}" wx:key='this' style="line-height: 80rpx;text-align:center;">{{item}}</view>
-            </picker-view-column>
-            <picker-view-column>
-            <view wx:for="{{three}}" wx:key='this' style="line-height: 80rpx;text-align:center;">{{item}}</view>
-            </picker-view-column>
-        </picker-view>
-    </view>
-</view>
+    <view class="cascade_hei"></view>
+    <view class="cascade_find">
+          <view class="cascade_header">
+              <text class='quxiao' catchtap="quxiao">取消</text>
+              <text class="queren" catchtap="queren">确认</text>
+          </view>
+          <picker-view indicator-style="height: 80rpx;" style="width: 100%; height: 400rpx;" bindchange="bindChange" value="{{value}}">
+              <picker-view-column>
+                <view wx:for="{{one}}" wx:key='this' style="line-height: 80rpx;text-align:center;">{{item}}</view>
+              </picker-view-column>
+              <picker-view-column>
+                <view wx:for="{{two}}" wx:key='this' style="line-height: 80rpx;text-align:center;">{{item}}</view>
+              </picker-view-column>
+              <picker-view-column>
+                <view wx:for="{{three}}" wx:key='this' style="line-height: 80rpx;text-align:center;">{{item}}</view>
+              </picker-view-column>
+          </picker-view>
+      </view>
+  </view>
+</template>
+
+<template name="classChoose">
+  <view class="cascade_box" animation="{{animaData}}">
+    <view class="cascade_hei"></view>
+    <view class="cascade_find">
+          <view class="cascade_header">
+              <text class='quxiao' catchtap="tapLeft">取消</text>
+              <text class="queren" catchtap="tapRight">确认</text>
+          </view>
+          <picker-view indicator-style="height: 80rpx;" style="width: 100%; height: 400rpx;" bindchange="classChange" value="{{value}}">
+              <picker-view-column>
+                <view wx:for="{{message}}" wx:key='this' style="line-height: 80rpx;text-align:center;">{{item}}</view>
+              </picker-view-column>
+              <picker-view-column>
+                <view wx:for="{{classData}}" wx:key='this' style="line-height: 80rpx;text-align:center;">{{item}}</view>
+              </picker-view-column>
+          </picker-view>
+      </view>
+  </view>
 </template>
