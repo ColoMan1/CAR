@@ -82,8 +82,8 @@
 </view>
 
 <view class="page__bd page__bd_spacing" style="padding:50rpx 30rpx;">
-  <navigator url="../pay/pay?code={{city_car_leftIndex}}&id={{city_car_rightIndex}}&timea={{date}}">
-    <button class="weui-btn" type="primary" style="background-color:#FFCE39;color:black;">立即预约</button>
+  <navigator url="../pay/pay?carStart={{two1}}&carEnd={{three1}}&dataDate={{classDataShow}}&dataTime={{bayCarTime}}&price={{price}}">
+    <button class="weui-btn" type="primary" bindtap="clickPay" style="background-color:#FFCE39;color:black;">立即预约</button>
   </navigator>
 </view>
 

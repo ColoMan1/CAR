@@ -51,7 +51,6 @@ App({
     }
   },
   globalData: {
-    userInfo: null,
-    price:"387"
+    userInfo: null
   }
 })
