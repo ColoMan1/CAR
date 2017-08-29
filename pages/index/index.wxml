@@ -9,29 +9,13 @@
       <view class="banci_left_top">
         出发站
       </view>
-      <view class="banci_left_bottom" bindtap="open">
-        <!-- <picker bindchange="bindCitycarChange_left" value="{{city_car_leftIndex}}" range="{{city_car_left}}">
-          <view class="">{{city_car_left[city_car_leftIndex]}}</view>
-        </picker> -->
-        <!-- <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-            <view class="weui-input">{{multiArray[1][multiIndex[1]]}}</view>
-        </picker> -->
-        {{two1}}
-      </view>
+      <view class="banci_left_bottom" bindtap="open">{{two1}}</view>
     </view>
     <view class="banci_right">
         <view class="banci_right_top">
           终点站
         </view>
-        <view class="banci_right_bottom" bindtap="open">
-          <!-- <picker bindchange="bindCitycarChange_right" value="{{city_car_rightIndex}}" range="{{city_car_right}}">
-            <view class="">{{multiArray[2][multiIndex[2]]}}</view>
-          </picker> -->
-           <!-- <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-              <view class="weui-input">{{multiArray[2][multiIndex[2]]}}</view>
-          </picker> -->
-          {{three1}}
-        </view>
+        <view class="banci_right_bottom" bindtap="open">{{three1}}</view>
     </view>
   </view>
 </view>
@@ -42,10 +26,6 @@
         <view class="weui-label">班次选择</view>
     </view>
     <view class="weui-cell__bd" >
-        <!-- <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-            <view class="weui-input" style="text-align:right;color:#ccc;">{{multiArray[1][multiIndex[1]]}}-{{multiArray[2][multiIndex[2]]}}</view>
-        </picker> -->
-        
         <view class="weui-input" style="text-align:right;color:#ccc;">{{classDataShow}}</view>
     </view>
   </view>
@@ -54,9 +34,6 @@
         <view class="weui-label">乘车时间</view>
     </view>
     <view class="weui-cell__bd">
-        <!-- <picker mode="date" value="{{date}}" fields="month" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
-            <view class="weui-input" style="text-align:right;color:#ccc;">{{date}}</view>
-        </picker> -->
         <view class="weui-input" style="text-align:right;color:#ccc;"> {{bayCarTime}}</view>
     </view>
   </view>
@@ -82,9 +59,10 @@
 </view>
 
 <view class="page__bd page__bd_spacing" style="padding:50rpx 30rpx;">
-  <navigator url="../pay/pay?carStart={{two1}}&carEnd={{three1}}&dataDate={{classDataShow}}&dataTime={{bayCarTime}}&price={{price}}">
-    <button class="weui-btn" type="primary" bindtap="clickPay" style="background-color:#FFCE39;color:black;">立即预约</button>
-  </navigator>
+  <!-- <navigator url="../pay/pay?carStart={{two1}}&carEnd={{three1}}&dataDate={{classDataShow}}&dataTime={{bayCarTime}}&price={{price}}">
+    <button class="weui-btn" type="primary" data-carStart="{{two1}}" disabled="{{butVerify}}" bindtap="clickPay" style="background-color:#FFCE39;color:black;">立即预约</button>
+  </navigator> -->
+  <button class="weui-btn" type="primary" data-carStart="{{two1}}" disabled="{{butVerify}}" bindtap="clickPay" style="background-color:#FFCE39;color:black;">立即预约</button>
 </view>
 
 <!-- 

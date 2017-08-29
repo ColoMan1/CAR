@@ -4,14 +4,14 @@ const choseClasse = require('../../config').choseClasse  //选择下单的班次
 const inquireClasses = require('../../config').inquireClasses  //查询已发车班次
 const classDetails = require('../../config').classDetails  //班次详情
 const createOrder = require('../../config').createOrder  //生成订单路线
-const carPay = require('../../config').carPay  //微信调用付款
+
 const queryTrip = require('../../config').queryTrip  //分布查询我的预约和行程
 var app = getApp()
 var gatherData = '';
 var init = 0;  // 用来判断用户是否触发了选择站点的change事件
 Page({
   data: {
-    price: [0],                                                //显示价格
+    price: 0,                                                //显示价格
     price1: [],                                              //储存价格
     priIndex: [0, 0],                                    //班次选择时判断是否选择了第二列
     one: [],                                                  //储存今天或者明天用于循环显示
@@ -32,7 +32,8 @@ Page({
     classId: "",                                      //生成订单参数  班次
     classId1: [],                                      //生成订单参数  班次
     routeId: "",                                      //生成订单参数  路线
-    routeId1: []                                      //生成订单参数  路线
+    routeId1: [],                                      //生成订单参数  路线
+    butVerify:false                                  //判断  立即预约是否可以跳转
   },
   //消失动画封装
   animat: function () {
@@ -240,24 +241,40 @@ Page({
   },
   //点击立即预约按钮获取订单号
   clickPay: function () {
-    wx.request({
-      url: createOrder,
-      data: {
-        "classId": this.data.classId,            //班次
-        "routeId": this.data.routeId,            //路线    班次和路线classes/getClasses会返回
-        "date": this.data.value[0],               //0今天的车，1表示明天
-        "pickUpSiteId": this.data.dataId,        //上车站点的ID。  就是开始站点的ID	
-        "downSiteId": this.data.endSiteId          //就是结束ID
-      },
-      method: "POST",
-      header: {
-        'content-type': 'application/json',
-        'Cookie': 'weChartID=d18f941b72fa464fba6f34b29018fd76'
-      },
-      success: function (res) {
-        console.log(res.data)
-      }
-    })
+    var that = this
+    if (that.data.price == 0 ){
+      wx.showModal({
+        title: '温馨提示',
+        content: '请先选择站点和班次',
+        success: function (res) {
+          that.setData({
+            butVerify:true
+          })
+        }
+      })
+    }else{
+      wx.request({
+        url: createOrder,
+        data: {
+          "classId": that.data.classId,            //班次
+          "routeId": that.data.routeId,            //路线    班次和路线classes/getClasses会返回
+          "date": that.data.value[0],               //0今天的车，1表示明天
+          "pickUpSiteId": that.data.dataId,        //上车站点的ID。  就是开始站点的ID	
+          "downSiteId": that.data.endSiteId          //就是结束ID
+        },
+        method: "POST",
+        header: {
+          'content-type': 'application/json',
+          'Cookie': 'weChartID=d18f941b72fa464fba6f34b29018fd76'
+        },
+        success: function (res) {
+          console.log(res.data)
+          wx.navigateTo({
+            url: "../pay/pay?carStart=" + that.data.two1 + "&carEnd=" + that.data.three1 + "&dataDate=" + that.data.classDataShow + "&dataTime=" + that.data.bayCarTime + "&price=" + that.data.price + "&orderNumber=" + res.data.data.orderNumber
+          })
+        }
+      }) 
+    }
   },
   onLoad: function () {
     var that = this
