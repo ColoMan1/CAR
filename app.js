@@ -23,15 +23,12 @@ App({
               },
               success: function (res) {
                 wx.setStorageSync('HPcar', res.data.data.weChartID)
-                
                 console.log(res.data)
-                
-               // console.log(res.data.Data.Oper)
-                // if (res.data.Data.Oper) {
-                //   wx.setStorageSync('jianzb_uid', res.data.Data.Oper.Id)
-                // } else {
-                //   wx.setStorageSync('jianzb_uid', 0)
-                // }
+                if (res.data.data.userID) {
+                  wx.setStorageSync('jianzb_uid', res.data.data.userID)
+                } else {
+                  wx.setStorageSync('jianzb_uid', 0)
+                }
               },
               fail: function (res) {
                 console.log('拉取用户openid失败，将无法正常使用开放接口等服务', res)
@@ -49,6 +46,28 @@ App({
         }
       })
     }
+  },
+  showError:function (str){
+    wx.showToast({
+      title: str,
+      image: '../../img/x.png'
+    })
+  },
+  countdown: function (that) {
+    var second = that.data.second
+    if (second == 0) {
+      that.setData({
+        second: "Time Out..."
+      });
+      return;
+    }
+    var time = setTimeout(function () {
+      that.setData({
+        second: second - 1
+      });
+      countdown(that);
+    }
+      , 1000)
   },
   globalData: {
     userInfo: null

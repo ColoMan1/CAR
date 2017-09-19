@@ -40,11 +40,40 @@
   height:85rpx;
   width:85rpx;
   float: left;
-  margin-right:35rpx
+  margin-right:35rpx;
 }
 .driverInfo{
   color: #BDBEBD;
   width:670rpx;
   margin:0 auto;
   font-size: 30rpx;
+  clear: both;
+  padding-top:60rpx;
+
+}
+.bgs{
+  background-image: url(https://phrcztc.chnai.com/photo/wechart/bgs.png);
+  background-repeat:repeat-x;
+  background-size: 60% 60%;
+  /*line-height: 140px;*/
+  width: 90%;
+  /*color: #F8F8F8;*/
+}
+.bgsk{
+  background-image: url(https://phrcztc.chnai.com/photo/wechart/bgsk.png);
+  background-repeat:no-repeat;
+  background-size: 40rpx 40rpx;
+  background-position-y: 82rpx;
+}
+.sta{
+  width:30px;
+  height: 30px;
+  /*line-height: 30px;*/
+  text-align:center;
+}
+.disH{
+  display: hidden;
+}
+.visH{
+  visibility: hidden;
 }

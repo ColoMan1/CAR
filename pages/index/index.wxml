@@ -2,7 +2,7 @@
 
 <view class="index_bigbox">
   <view class="top_border">
-    <image src="../../img/bus.png" class="img"></image>
+    <image src="https://phrcztc.chnai.com/photo/wechart/bus.png" class="img"></image>
   </view>
   <view class="banci_center">
     <view class="banci_left">
@@ -43,7 +43,7 @@
       <view class="weui-label">支付方式</view> 
     </view>
     <view class="weui-cell__bd" style="text-align:right;">
-       <image src="../../img/wxpay.png" style="height:60rpx;width:200rpx;"></image>
+       <image src="https://phrcztc.chnai.com/photo/wechart/wxpay.png" style="height:60rpx;width:200rpx;"></image>
     </view>
   </view>
    <view class="weui-cell weui-cell_input">
@@ -62,7 +62,7 @@
   <!-- <navigator url="../pay/pay?carStart={{two1}}&carEnd={{three1}}&dataDate={{classDataShow}}&dataTime={{bayCarTime}}&price={{price}}">
     <button class="weui-btn" type="primary" data-carStart="{{two1}}" disabled="{{butVerify}}" bindtap="clickPay" style="background-color:#FFCE39;color:black;">立即预约</button>
   </navigator> -->
-  <button class="weui-btn" type="primary" data-carStart="{{two1}}" disabled="{{butVerify}}" bindtap="clickPay" style="background-color:#FFCE39;color:black;">立即预约</button>
+  <button class="weui-btn" type="primary" data-carStart="{{two1}}" bindtap="clickPay" style="background-color:#FFCE39;color:black;">立即预约</button>
 </view>
 
 <!-- 

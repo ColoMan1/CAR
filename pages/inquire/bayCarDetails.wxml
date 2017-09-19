@@ -1,6 +1,4 @@
-<!-- 
-        =======     乘车详情 
--->
+
 <view class="pay_top">
   <view class="pay_top_top">
     <view>{{topShowClass}}</view>
@@ -12,7 +10,7 @@
         出发站
       </view>
       <view class="banci_left_bottom">
-        <view style="font-weight: bold;">{{bayCarDetails_left[bayCarDetails_leftIndex]}}</view>
+        <view style="font-weight: bold;">{{startSite}}</view>
       </view>
     </view>
     <image src="../../img/jt1.png" style="height:72rpx;width:72rpx;"></image>
@@ -21,29 +19,61 @@
           终点站
         </view>
         <view class="banci_right_bottom">
-          <view style="font-weight: bold;">{{bayCarDetails_right[bayCarDetails_rightIndex]}}</view>
+          <view style="font-weight: bold;">{{endSite}}</view>
         </view>
     </view>
   </view>
 </view>
 
-<view style="height:180rpx;"></view>
+<view class="bgs" style="height:180rpx;margin:0 auto;overflow:hidden;">
+<scroll-view scroll-x="true" bindscroll="scroll" lower-threshold='12' style="width: 100%;white-space:nowrap;">
+<block wx:for="{{classes}}" wx:key="">
+  <view id="{{item.ids}}" class="bgsk" style="width:{{item.tomew}}%;display:inline-block;{{item.tome}}">
+  <view style="width:100%;text-align: {{item.tomes}};display:block;font-size:0.7rem;padding-top:80rpx;">
+  <image src="https://phrcztc.chnai.com/photo/wechart/sta.png" class="sta {{item.visH}}"></image>
+  <view style="width:100%;margin-top:-20rpx;">{{item.name}}</view>
+  </view>
+  </view>
+</block>
+</scroll-view>
+</view>
+
 <!-- 司机信息 -->
 <view class="driverInfo">
-  <image src="../../img/sj.png"></image>
+  <image src="https://phrcztc.chnai.com/photo/wechart/sj.png"></image>
   <view class="">本趟车次驾驶员 <text style="margin-left:10rpx;">{{driver}}</text></view>
   <view class="">{{carId}}</view>
 </view>
 
 <view class="page__bd page__bd_spacing" style="padding:76rpx 30rpx 0;text-align:center;">
   <!-- 查看上车码按钮 -->
-  <navigator url="../code/code?code=123adg">
+  <block wx:if="{{orderNumbers}}">
+  <navigator url="../code/code?code={{orderNumber}}">
     <button class="weui-btn" type="primary" style="background-color:#FFCE39;color:black;">查看上车码</button>
   </navigator>
+  </block>
   <!-- 联系司机按钮 -->
+  <block wx:if="{{driverPhone}}">
   <navigator url="">
     <button class="weui-btn" type="primary" style="background-color:white;color:black;margin-top:20rpx;">联系司机</button>
   </navigator>
+  </block>
+  <!--截单-->
+  <block wx:if="{{isCutOff}}">
+    <!-- 取消订单 -->
+    <block wx:if="{{orderNumbers}}">
+    <navigator>
+      <!-- <button class="weui-btn" type="primary" style="background-color:#FFCE39;color:black;">取消订单</button> -->
+      <button class="weui-btn" type="primary" style="background-color:white;color:black;margin-top:20rpx;">取消订单</button>
+    </navigator>
+    </block>
+    <!-- 立即预约 -->
+    <block wx:if="{{orderPay}}">
+    <navigator>
+      <button class="weui-btn" type="primary" style="background-color:#FFCE39;color:black;">立即预约</button>
+    </navigator>
+    </block>
+  </block>
 </view>
   <!-- 底部说明文字 -->
 <view style="width:70%;margin:20rpx auto;font-size:24rpx;color: #BDBEBD;">截单两小时前取消预约可全额退款,截单一小时前可退50%。截单后取消订单将无法获得退款</view>

@@ -10,20 +10,31 @@ Page({
     three1: "",
     classDataShow: "",
     bayCarTime: "",
-    orderNumber:""
+    orderNumber:"",
+    timeStamp:"",
+    nonceStr:"",
+    packageWx:"",
+    paySign:""
   },
   affirmPay:function(){
+    var that = this;
     wx.requestPayment({
-      'timeStamp': '',
-      'nonceStr': '',
-      'package': '',
+      'timeStamp': this.data.timeStamp,
+      'nonceStr': this.data.nonceStr,
+      'package': this.data.packageWx,
       'signType': 'MD5',
-      'paySign': '',
-      'success': function (res) {
-        consol.log(res)
+      'paySign': this.data.paySign,
+      success: function (res) {
+        console.log(res)
+        wx.reLaunch({
+          url: "../pay_success/pay_success?price=" + that.data.price + "&dataDate=" + that.data.classDataShow + "&dataTime=" + that.data.bayCarTime
+        })
       },
-      'fail': function (res) {
-        consol.log(res)
+      fail: function (res) {
+        console.log(res)
+        wx.reLaunch({
+          url: "../pay_success/pay_defeated" 
+        })
       }
     })
   },
@@ -32,7 +43,8 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    this.setData({
+    var that = this
+    that.setData({
       two1: options.carStart,
       three1: options.carEnd,
       classDataShow: options.dataDate,
@@ -43,15 +55,21 @@ Page({
     wx.request({
       url: carPay,
       data: {
-        orderNumber: this.data.orderNumber
+        orderNumber: that.data.orderNumber
       },
       method: "POST",
       header: {
-        'content-type':'application/x-www-from-urlencoded',
-        'Cookie': 'weChartID=d18f941b72fa464fba6f34b29018fd76'
+        'content-type': 'application/json',
+        'Cookie': 'weChartID=' + wx.getStorageSync('HPcar')
       },
       success: function (res) {
         console.log(res.data)
+        that.setData({
+          timeStamp: res.data.data.timeStamp,
+          nonceStr: res.data.data.nonceStr,
+          packageWx: res.data.data.package,
+          paySign: res.data.data.paySign
+        })
       }
     })
   }

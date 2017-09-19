@@ -5,14 +5,14 @@
  <view class="weui-panel__ft" style="background-color:white;margin-top:100rpx;">
     <view class="weui-cell weui-cell_access weui-cell_link" style="">
         <view class="weui-cell__bd">
-            <image src="{{userInfo.avatarUrl}}" class="picture"></image>
+            <image src="{{logoUrl}}" class="picture"></image>
         </view>
          <view class="weui-cell__bd">
-              <view class="classname">{{userInfo.nickName}}</view>
-              <view class="classname">{{userInfo.province}}</view>
+              <view class="classname">{{realName}}</view>
+              <view class="classname">{{username}}</view>
         </view>
         <view class="weui-cell__bd">
-          <view class="renz">已认证</view>
+          <view class="renz">{{auditFlag}}</view>
         </view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </view>
@@ -23,7 +23,7 @@
   <view class="weui-panel__ft box">
     <view class="weui-cell weui-cell_access weui-cell_link" style="padding:3px 15px;border-top: 1px solid  #E6E6E6;border-bottom:0;">
         <view class="">
-            <image src="../../img/yy.png" style="height:80rpx;width:80rpx;"></image>
+            <image src="https://phrcztc.chnai.com/photo/wechart/yy.png" style="height:80rpx;width:80rpx;"></image>
         </view>
          <view class="weui-cell__bd" style="padding-left:44rpx;">
             我的预约
@@ -37,7 +37,7 @@
   <view class="weui-panel__ft box" style="margin:0;">
     <view class="weui-cell weui-cell_access weui-cell_link" style="border:0;padding:3px 15px;">
         <view class="">
-            <image src="../../img/xc.png" style="height:80rpx;width:80rpx;"></image>
+            <image src="https://phrcztc.chnai.com/photo/wechart/xc.png" style="height:80rpx;width:80rpx;"></image>
         </view>
          <view class="weui-cell__bd" style="padding-left:44rpx;">
             我的行程
@@ -51,7 +51,7 @@
  <view class="weui-panel__ft box1" style="margin:0;">
     <view class="weui-cell weui-cell_access weui-cell_link" style="padding:3px 15px;border-top: 0;border-bottom:1px solid  #E6E6E6;">
         <view class="">
-            <image src="../../img/xx.png" style="height:80rpx;width:80rpx;"></image>
+            <image src="https://phrcztc.chnai.com/photo/wechart/xx.png" style="height:80rpx;width:80rpx;"></image>
         </view>
          <view class="weui-cell__bd" style="padding-left:44rpx;">
             完善信息

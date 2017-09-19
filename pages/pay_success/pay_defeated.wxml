@@ -1,0 +1,15 @@
+<!-- 
+        =======     支付失败 
+-->
+<view class="icon-box" style="text-align:center;margin:100rpx 0 50rpx 0;">
+    <image src="../../img/x.png" style="height:300rpx;width:300rpx;"></image>
+</view>
+<view style="text-align:center;font-size:56rpx;margin: 30rpx 0;">
+  支付出现问题
+</view>
+<view style="text-align:center;font-size:32rpx;color:#ccc;width:80%;margin:0 auto;">
+  本次支付没有成功，请返回主页重新预约
+</view>
+<view class="page__bd page__bd_spacing" style="padding:30rpx 30rpx 0;text-align:center;">
+   <button class="weui-btn" bindtap="binComeBack" type="primary" style="border：1px solid #cc;background-color:white;color:black;">返回主页面</button>
+</view>

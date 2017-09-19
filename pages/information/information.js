@@ -1,120 +1,178 @@
-// pages/information/information.js
-const uploadImage = require('../../config').uploadImage  //接口js引入
+const userDetail = require('../../config').userDetail;  
+const userUpdate = require('../../config').userUpdate; 
+const uploadImage = require('../../config').uploadImage;  
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    files1: [], //这里设成数组是为了储存多张图片，wxhtml也做成了循环，但这里只需一张图，所以下面封装的函数里面把数组的concat（）方法去掉了
+    imageList:[],
+    files1: [], 
     files2: [],
     files3:[],
+    image:"",
     hide1: "",
     hide2: "",
     hide3:"",
-    timeS: "未指定",
-    timeX:"未指定"
+    timeS: null,
+    timeX: null,
+    submitBox:false,
+    certificateUrl:'',
+    identityUrl1: '',
+    identityUrl2: '',
+    logoUrl:''
   },
-  bindTimeChanges: function (e) {
+  bindTimeChange: function (e) {
+    if (e.currentTarget.dataset.type =="timeS"){
       this.setData({
-          timeS: e.detail.value
+        timeS: e.detail.value,
+        submitBox: true
       })
-  },
-  bindTimeChangex: function (e) {
+    } else if (e.currentTarget.dataset.type == "timeX"){
       this.setData({
-          timeX: e.detail.value
+        timeX: e.detail.value,
+        submitBox: true
       })
+    } 
   },
-    uploadImageFn: function (tempFile) {   //图片上传函数
-        wx.uploadFile({
-          url: uploadImage,
-          filePath: tempFile[0],
-          name: 'file',
-          header: { "Content-Type": "multipart/form-data" },
-            success: function (res) {
-                console.log(res)
-            },
-            fail: function (e) {
-                sonsole.log(e)
-            }
-        })
-   },
-  chooseImage1: function (e){
+  uploadImageFn: function (tempFile,state) {   //图片上传函数
     var that = this;
-    wx.chooseImage({
-        sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-        success: function (res, failSome) {
-            // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-            that.setData({
-                files1: that.data.files1.concat(res.tempFilePaths)  //用于存多张
-            });
-            var tempFilePaths = res.tempFilePaths
-            that.setData({
-                hide1: true
-            });
-            that.uploadImageFn(tempFilePaths)
+    wx.uploadFile({
+      url: uploadImage,
+      filePath: tempFile[0],
+      name: 'file',
+      header: { "Content-Type": "multipart/form-data" },
+      success: function (res) {
+        console.log(res)
+        if (state == 'logoUrl') {
+          that.setData({
+            logoUrl: res.data,
+            submitBox: true
+          })
+        } else if (state == 'certificateUrl') {
+          that.setData({
+            certificateUrl: res.data,
+            submitBox: true
+          })
+        } else if (state == 'identityUrl1') {
+          that.setData({
+            identityUrl1: res.data,
+            submitBox: true
+          })
+        } else if (state == 'identityUrl2') {
+          that.setData({
+            identityUrl2: res.data,
+            
+          })
         }
+      },
+      fail: function (e) {
+        return false;
+      }
     })
   },
-  previewImage1: function (e) {
-      wx.previewImage({
-          current: e.currentTarget.id, // 当前显示图片的http链接
-          urls: this.data.files1 // 需要预览的图片http链接列表
-      })
+  chooseImage: function (e) {
+    var that = this;
+    wx.chooseImage({
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res, failSome) {
+        var tempFilePaths = res.tempFilePaths
+        that.uploadImageFn(tempFilePaths, e.currentTarget.dataset.type)
+        if (e.currentTarget.dataset.type == 'logoUrl') {
+          that.setData({
+            imageList: that.data.imageList.concat(res.tempFilePaths),
+            image: true
+          });
+        } else if (e.currentTarget.dataset.type == 'certificateUrl') {
+          that.setData({
+            files1: that.data.files1.concat(res.tempFilePaths),
+            hide1: true
+          });
+        } else if (e.currentTarget.dataset.type == 'identityUrl1') {
+          that.setData({
+            files2: that.data.files2.concat(res.tempFilePaths),
+            hide2: true
+          });
+        } else if (e.currentTarget.dataset.type == 'identityUrl2') {
+          that.setData({
+            files3: that.data.files3.concat(res.tempFilePaths),
+            hide3: true
+          });
+        }
+      }
+    })
   },
-  chooseImage2: function (e) {
-      var that = this;
-      wx.chooseImage({
-          sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-          sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-          success: function (res) {
-              // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-              that.setData({
-                  files2: that.data.files2.concat(res.tempFilePaths)
-              });
-              that.setData({
-                  hide2: true
-              });
-              var tempFilePaths1 = res.tempFilePaths
-              that.uploadImageFn(tempFilePaths1)
-          }
-      })
-  },
-  previewImage2: function (e) {
-      wx.previewImage({
-          current: e.currentTarget.id, // 当前显示图片的http链接
-          urls: this.data.files2 // 需要预览的图片http链接列表
-      })
-  },
-  chooseImage3: function (e) {
-      var that = this;
-      wx.chooseImage({
-          sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-          sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-          success: function (res) {
-              // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-              that.setData({
-                  files3: that.data.files3.concat(res.tempFilePaths)
-              });
-              that.setData({
-                  hide3: true
-              });
-              var tempFilePaths2 = res.tempFilePaths
-              that.uploadImageFn(tempFilePaths2)
-          }
-      })
-  },
-  previewImage3: function (e) {
-      wx.previewImage({
-          current: e.currentTarget.id, // 当前显示图片的http链接
-          urls: this.data.files3 // 需要预览的图片http链接列表
-      })
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
+    var that = this
+    wx.request({
+      url: userDetail,
+      data: {
+        "userID": wx.getStorageSync('jianzb_uid')
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/json',
+        'Cookie': 'weChartID=' + wx.getStorageSync('HPcar')
+      },
+      dataType: "json",
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          realName: res.data.data.realName,
+          logoUrl: res.data.data.logoUrl,
+          timeS: res.data.data.onDutyTime,
+          timeX: res.data.data.offDutyTime, 
+          identityNumber:res.data.data.identityNumber,
+          company: res.data.data.company,
+          certificateUrl: res.data.data.certificateUrl,
+          identityUrl1: res.data.data.identityUrl1,
+          identityUrl2: res.data.data.identityUrl2,
+        })
+      }
+    })
+  },
+  onchangeValue: function (e){
+    var that = this
+    if (!that.data.submitBox){
+      that.setData({
+        submitBox: true
+      })
+    }
+  },
+  submitForm: function(e){
+    console.log(e.detail)
+    wx.request({
+      url: userUpdate,
+      data: {
+        "realName": e.detail.value.realName ? e.detail.value.realName:null,
+        "identityNumber": e.detail.value.identityNumber ? e.detail.value.identityNumber : null,
+        "identityUrl1": e.detail.value.identityUrl1 ? e.detail.value.identityUrl1 : null,
+        "identityUrl2": e.detail.value.identityUrl2 ? e.detail.value.identityUrl2 : null,
+        "company": e.detail.value.company ? e.detail.value.company : null,
+        "logoUrl": e.detail.value.logoUrl ? e.detail.value.logoUrl : null,
+        "onDutyTime": e.detail.value.onDutyTime ? e.detail.value.onDutyTime : null,
+        "offDutyTime": e.detail.value.offDutyTime ? e.detail.value.offDutyTime : null,
+        "certificateUrl": e.detail.value.certificateUrl ? e.detail.value.certificateUrl : null
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/json',
+        'Cookie': 'weChartID=' + wx.getStorageSync('HPcar')
+      },
+      dataType: "json",
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.status){
 
+        }else{
+          wx.showToast({
+            title: '服务区忙请稍后再试！',
+            image: '../../img/x.png'
+          })
+        }
+        // that.setData({
+        //   realName: res.data.data.realName,
+        //   logoUrl: res.data.data.logoUrl,
+        // })
+      }
+    })
   }
 })

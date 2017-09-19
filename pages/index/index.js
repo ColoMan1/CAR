@@ -4,11 +4,10 @@ const choseClasse = require('../../config').choseClasse  //选择下单的班次
 const inquireClasses = require('../../config').inquireClasses  //查询已发车班次
 const classDetails = require('../../config').classDetails  //班次详情
 const createOrder = require('../../config').createOrder  //生成订单路线
-
-const queryTrip = require('../../config').queryTrip  //分布查询我的预约和行程
 var app = getApp()
 var gatherData = '';
 var init = 0;  // 用来判断用户是否触发了选择站点的change事件
+var indexBan = 0;  // 用来判断用户是否触发了选择班次的change事件
 Page({
   data: {
     price: 0,                                                //显示价格
@@ -32,8 +31,7 @@ Page({
     classId: "",                                      //生成订单参数  班次
     classId1: [],                                      //生成订单参数  班次
     routeId: "",                                      //生成订单参数  路线
-    routeId1: [],                                      //生成订单参数  路线
-    butVerify:false                                  //判断  立即预约是否可以跳转
+    routeId1: []                                      //生成订单参数  路线
   },
   //消失动画封装
   animat: function () {
@@ -185,7 +183,7 @@ Page({
       method: "POST",
       header: {
         'content-type': 'application/json',
-        'Cookie': 'weChartID=d18f941b72fa464fba6f34b29018fd76'
+        'Cookie': 'weChartID='+wx.getStorageSync('HPcar')
       },
       success: function (res) {
         console.log(res.data)
@@ -214,7 +212,7 @@ Page({
           classId1: classId1,
           routeId1: routeId1
         })
-        if (res.data.data.data.length == 1) {   //判断班次数量  此时无法触发班次选择change事件
+        if (indexBan == 0) {   //判断用户是否调用change  此时无法触发班次选择change事件
           that.setData({
             price: that.data.price1[0],
             classDataShow: that.data.classData[0],
@@ -227,8 +225,8 @@ Page({
   },
   //班次选择change事件
   classChange: function (e) {
-    var that = this
-    var val = e.detail.value
+    var that = this;
+    var val = e.detail.value;
     var t = that.data.priIndex;
     if (val[1] != t[1]) {
       that.setData({
@@ -237,7 +235,8 @@ Page({
         routeId: that.data.routeId1[val[1]],
         classId: that.data.classId1[val[1]]
       })
-    }
+    };
+    indexBan++;// 用来判断用户是否触发了选择班次的change事件
   },
   //点击立即预约按钮获取订单号
   clickPay: function () {
@@ -247,9 +246,7 @@ Page({
         title: '温馨提示',
         content: '请先选择站点和班次',
         success: function (res) {
-          that.setData({
-            butVerify:true
-          })
+         
         }
       })
     }else{
@@ -265,13 +262,23 @@ Page({
         method: "POST",
         header: {
           'content-type': 'application/json',
-          'Cookie': 'weChartID=d18f941b72fa464fba6f34b29018fd76'
+          'Cookie': 'weChartID=' + wx.getStorageSync('HPcar')
         },
         success: function (res) {
           console.log(res.data)
-          wx.navigateTo({
-            url: "../pay/pay?carStart=" + that.data.two1 + "&carEnd=" + that.data.three1 + "&dataDate=" + that.data.classDataShow + "&dataTime=" + that.data.bayCarTime + "&price=" + that.data.price + "&orderNumber=" + res.data.data.orderNumber
-          })
+          if (res.data.data == null ){
+            wx.showModal({
+              title: '温馨提示',
+              content: '请勿重复下单,未支付订单可在“我的预约”中继续支付',
+              success: function (res) {
+
+              }
+            })
+          }else{
+            wx.navigateTo({
+              url: "../pay/pay?carStart=" + that.data.two1 + "&carEnd=" + that.data.three1 + "&dataDate=" + that.data.classDataShow + "&dataTime=" + that.data.bayCarTime + "&price=" + that.data.price + "&orderNumber=" + res.data.data.orderNumber
+            })
+          }
         }
       }) 
     }
@@ -281,12 +288,11 @@ Page({
     wx.request({
       url: choseSite,
       data: {
-
       },
       method: "POST",
       header: {
         'content-type': 'application/json',
-        'Cookie': 'weChartID=d18f941b72fa464fba6f34b29018fd76'
+        'Cookie': 'weChartID=' + wx.getStorageSync('HPcar')
       },
       success: function (res) {
         console.log(res.data.data)
@@ -308,14 +314,16 @@ Page({
             }
           })
         }
-        for (let i = 0; i < gatherData.length; i++) {
-          one.push(gatherData[i].name);
-        }
-        for (let i = 0; i < gatherData[0].data.length; i++) {
-          two.push(gatherData[0].data[i].name);    //取到所有初始化的出发站
-        }
-        for (let i = 0; i < gatherData[0].data[0].endSite.length; i++) {
-          three.push(gatherData[0].data[0].endSite[i].name); //取到所有初始化的终点站
+        if (gatherData){
+          for (let i = 0; i < gatherData.length; i++) {
+            one.push(gatherData[i].name);
+          }
+          for (let i = 0; i < gatherData[0].data.length; i++) {
+            two.push(gatherData[0].data[i].name);    //取到所有初始化的出发站
+          }
+          for (let i = 0; i < gatherData[0].data[0].endSite.length; i++) {
+            three.push(gatherData[0].data[0].endSite[i].name); //取到所有初始化的终点站
+          }
         }
         that.setData({
           one: one,
@@ -324,10 +332,7 @@ Page({
           two1: gatherData[0].data[0].name,
           three1: gatherData[0].data[0].endSite[0].name
         })
-
       }
     })
   }
 })
-
-

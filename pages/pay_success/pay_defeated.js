@@ -1,4 +1,4 @@
-// pages/alter_password/new_password.js
+// pages/pay_success/pay_defeated.js
 Page({
 
   /**
@@ -7,16 +7,15 @@ Page({
   data: {
   
   },
-
+  binComeBack:function(){
+    wx.reLaunch({
+      url: "../index/index"
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  },
-  navTo_newpass_success: function () {
-     wx.navigateTo({
-        url: 'new_password_success',
-     })
+  
   }
 })

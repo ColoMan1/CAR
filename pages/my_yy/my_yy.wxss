@@ -1,1 +1,66 @@
-/* pages/my_yy/my_yy.wxss */
+.weui-cell::before {
+  content:" ";
+  border:0;
+}
+.for_banci{
+  display: flex;
+  align-items: center;
+  margin: 0 10rpx;     /*车站箭头时间平分布局 */
+}
+.banciTe{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width:155rpx;
+  position:absolute;
+  right:0;
+  top:13rpx;
+  color: #858584;
+}
+.jdTime{
+  margin-left:158rpx;
+  color: #858584;
+}
+.leftContent{
+  width: 75%;
+  display: flex;
+}
+.yjd{
+  background:url(https://phrcztc.chnai.com/photo/wechart/bg1.png)no-repeat;
+  background-size: cover;
+  height: 56rpx;
+  width: 136rpx;
+  text-align: center;
+  line-height: 56rpx;
+  color: white;
+  margin: 18rpx 0;
+  float: left;
+  margin-left: 30rpx;
+}
+.yfc{
+     background:url(https://phrcztc.chnai.com/photo/wechart/bg3.png)no-repeat;
+}
+.wfc{
+     background:url(https://phrcztc.chnai.com/photo/wechart/green.png)no-repeat; 
+}
+.yfc,.wfc{
+  background-size: cover;
+  height: 56rpx;
+  width: 136rpx;
+  text-align: center;
+  line-height: 56rpx;
+  color: white;
+  margin: 18rpx 0;
+  float: left;
+}
+.wjd{
+  background:url(https://phrcztc.chnai.com/photo/wechart/green.png)no-repeat;
+  background-size: cover;  
+  height: 56rpx;
+  width: 136rpx;
+  text-align: center;
+  line-height: 56rpx;
+  color: white;
+  margin: 18rpx 0;
+  float: left;
+}

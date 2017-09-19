@@ -27,6 +27,18 @@ Page({
   },
   loginNavto: function () {  //点击登录按钮验证
   var that = this
+  if (this.data.phone === "" || this.data.pass === "") {
+    wx.showModal({
+      title: '提示',
+      content: '手机号或者密码不能为空'
+    })
+  } else if (!myreg.test(this.data.phone)) {
+    wx.showToast({
+      title: '请填写正确的手机号码',
+      image: '../../img/x.png'
+    })
+  } else {
+    console.log(wx.getStorageSync('HPcar'))
     wx.request({
       url: Login,
       data: {
@@ -36,60 +48,69 @@ Page({
       method: "POST",
       header: {
         'content-type': 'application/json',
-        weChartID: that.data.HPcar_id
+        'Cookie': 'weChartID=' + wx.getStorageSync('HPcar')
       },
       success: function (res) {
         console.log(res)
+        if (res.data.status){
+          if (res.data.data.userID){
+            wx.setStorageSync('jianzb_uid', res.data.data.userID)
+            wx.reLaunch({  //关闭所有页面，打开到应用内的某个页面
+              url: '../index/index'
+            })
+          }else{
+            app.showErroe(res.data.data.message)
+          }
+        }else{
+          app.showErroe(res.data.message)
+        }
       },
-      fail:function(res){
+      fail: function (res) {
         console.log(this.data.phone)
         console.log(res)
       }
     })
-      if (this.data.phone === "" || this.data.pass === "") {
-          wx.showModal({
-              title: '提示',
-              content: '手机号或者密码不能为空'
-          })
-      } else if ( !myreg.test(this.data.phone) ){
-        wx.showToast({
-          title: '请填写正确的手机号码',
-          image: '../../img/x.png'
-        })
-      } else{
-        wx.reLaunch({  //关闭所有页面，打开到应用内的某个页面
-          url: '../index/index'
-        })
-      }
+    
+  }
+    
+      
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   // app.getUserInfo()
+    
+    
+    
       var that =this
-      // wx.getStorage({  //取出存储的手机号和密码
-      //     key: 'HPcar_id',
-      //     success: function (res) {
-      //       console.log(res.data)
-      //       that.setData({
-      //         pass: res.data.passWord,
-      //         phone: res.data.phoneNumber
-      //       })
-      //     }
-      // }),
+      wx.getStorage({  //取出存储的手机号和密码
+          key: 'HPcar_id',
+          success: function (res) {
+            console.log(res.data)
+            that.setData({
+              pass: res.data.passWord,
+              phone: res.data.phoneNumber
+            })
+          }
+      }),
 
       //var weChartID = wx.getStorageSync('HPcar_id')
-    // wx.getStorage({
-    //   key: 'HPcar',
-    //   success: function (res) {
-    //     that.setData({
-    //       HPcar_id: res.data
-    //     })
-    //   },
-    //   fail:function(res) {
-    //     console.log(res)
-    //   }
-    // })
+    wx.getStorage({
+      key: 'HPcar',
+      success: function (res) {
+        that.setData({
+          HPcar_id: res.data
+        })
+      },
+      fail:function(res) {
+        console.log(res)
+      }
+    })
+      app.getUserInfo()
+      if (wx.getStorageSync('jianzb_uid')) {
+        wx.reLaunch({  //关闭所有页面，打开到应用内的某个页面
+          url: '../index/index'
+        })
+      }
   }
 })

@@ -1,18 +1,26 @@
-<!-- 
-        =======     完善信息 
--->
+<form bindsubmit="submitForm">
 <view class="box">
     <form bindsubmit="bindform" class="infor_form">
-      <image src="../../img/man.png"></image>
+      <view class="weui-uploader__files">
+        <block wx:for="{{imageList}}" wx:key="*this">
+          <view class="weui-uploader__file">
+            <image class="weui-uploader__img" src="{{item}}"></image>
+            <input name="logoUrl" type="text" value="{{logoUrl}}" style="display:none;"  />
+          </view>
+        </block>
+      </view>
+      <view hidden="{{image}}" class="weui-uploader__input-box" style="border:0;content:'';width:258rpx;height:258rpx;background-image:url({{logoUrl}});background-size:100% 100%;margin:-30px 5px 0 15px;">
+        <view class="weui-uploader__input" bindtap="chooseImage" data-type="logoUrl">修改头像</view>
+      </view>
       <view class="weui-cells weui-cells_after-title input_box">
           <view class="weui-cell weui-cell_input input">
               <view class="weui-cell__bd">
-                  <input name="input" class="weui-input" placeholder-style="color:white;" placeholder="您的姓名" />
+                  <input name="realName" class="weui-input" placeholder-style="color:white;" placeholder="{{realName}}" bindinput="onchangeValue"/>
               </view>
           </view>
           <view class="weui-cell weui-cell_input weui-cell_vcode input2">
               <view class="weui-cell__bd">
-                  <input name="input1" class="weui-input" placeholder-style="color:#F5F4F2;" placeholder="所在公司名称" />
+                  <input name="company" class="weui-input" placeholder-style="color:#F5F4F2;" placeholder="{{company?company:'所在公司名称'}}" bindinput="onchangeValue"/>
               </view>
           </view>
       </view>
@@ -28,10 +36,11 @@
                          <block wx:for="{{files1}}" wx:key="*this">
                             <view class="weui-uploader__file" bindtap="previewImage1" id="{{item}}">
                                 <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                                <input name="certificateUrl" type="text" value="{{certificateUrl}}" style="display:none;"  />
                             </view>
                         </block> 
                     </view>
-                    <view hidden="{{hide1}}" bindtap="chooseImage1" class="weui-uploader__input-box" style="height:100rpx;width:100rpx;">
+                    <view hidden="{{hide1}}" bindtap="chooseImage" data-type="certificateUrl" class="weui-uploader__input-box" style="height:100rpx;width:100rpx;background-image:url({{certificateUrl}});background-size:100% 100%;">
                         <view class="weui-uploader__input"></view>
                     </view>
                     <view class="weui-cell__bd prove">
@@ -51,7 +60,7 @@
             身份证号码
         </view>
         <view class="weui-cell__bd">
-            <input name="input" type="number" class="weui-input" placeholder-style="text-align: right;" placeholder="点击填写" />
+            <input name="identityNumber" type="number" class="weui-input" placeholder-style="text-align: right;" placeholder="{{identityNumber?identityNumber:'点击填写'}}" bindinput="onchangeValue" />
         </view>
     </view>
 </view>
@@ -65,10 +74,11 @@
                         <block wx:for="{{files2}}" wx:key="*this">
                             <view class="weui-uploader__file" bindtap="previewImage2" id="{{item}}">
                                 <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                                <input name="identityUrl1" type="text" value="{{identityUrl1}}" style="display:none;"  />
                             </view>
                         </block>
                     </view>
-                    <view hidden="{{hide2}}" bindtap="chooseImage2" class="weui-uploader__input-box" style="height:100rpx;width:100rpx;">
+                    <view hidden="{{hide2}}" bindtap="chooseImage" data-type="identityUrl1"  class="weui-uploader__input-box" style="height:100rpx;width:100rpx;background-image:url({{identityUrl1}});background-size:100% 100%;">
                         <view class="weui-uploader__input"></view>
                     </view>
                     <view class="weui-cell__bd prove">
@@ -88,10 +98,11 @@
                     <block wx:for="{{files3}}" wx:key="*this">
                         <view class="weui-uploader__file" bindtap="previewImage3" id="{{item}}">
                             <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                            <input name="identityUrl2" type="text" value="{{identityUrl2}}" style="display:none;"  />
                         </view>
                     </block>
                 </view>
-                <view hidden="{{hide3}}" bindtap="chooseImage3" class="weui-uploader__input-box" style="height:100rpx;width:100rpx;">
+                <view hidden="{{hide3}}" bindtap="chooseImage" data-type="identityUrl2"  class="weui-uploader__input-box" style="height:100rpx;width:100rpx;background-image:url({{identityUrl2}});background-size:100% 100%;">
                     <view class="weui-uploader__input"></view>
                 </view>
                 <view class="weui-cell__bd prove">
@@ -109,8 +120,8 @@
             <view class="weui-label">公司上班时间</view>
         </view>
         <view class="weui-cell__bd">
-            <picker mode="time" value="{{timeS}}" start="9:00" end="24:00" bindchange="bindTimeChanges">
-                <view class="weui-input" style="text-align:right;color:#ccc;">{{timeS}}</view>
+            <picker mode="time" value="{{timeS}}" start="9:00" end="24:00" bindchange="bindTimeChange" data-type="timeS">
+                <view class="weui-input" style="text-align:right;color:#ccc;">{{timeS?timeS:'未指定'}}</view>
             </picker>
         </view>
     </view>
@@ -119,11 +130,16 @@
             <view class="weui-label">公司下班时间</view>
         </view>
         <view class="weui-cell__bd">
-            <picker mode="time" value="{{timeX}}" start="9:00" end="24:00" bindchange="bindTimeChangex">
-                <view class="weui-input" style="text-align:right;color:#ccc;">{{timeX}}</view>
+            <picker mode="time" value="{{timeX}}" start="9:00" end="24:00" bindchange="bindTimeChange" data-type="timeX">
+                <view class="weui-input" style="text-align:right;color:#ccc;">{{timeX?timeX:'未指定'}}</view>
             </picker>
         </view>
     </view>
 </view>
-
+<block wx:if="{{submitBox}}">
+<input name="onDutyTime" type="text" value="{{timeS}}" style="display:none;"  />
+<input name="offDutyTime" type="text" value="{{timeX}}" style="display:none;"  />
+  <button style="background-color:#FFCE39;color:black;width:80%;margin:0 auto;" formType="submit">保存</button>
+</block>
+</form>
 <view class="footer">填写准确信息可以加速路线开通</view>

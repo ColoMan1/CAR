@@ -1,19 +1,23 @@
 {
   "pages": [
+          "pages/inquire/inquire",
+          "pages/my/my",
+      "pages/my_yy/my_yy",
+
+    "pages/login/login",    
     "pages/index/index",
-    "pages/inquire/inquire",
     "pages/information/information",
-    "pages/login/login",
     "pages/code/code",
-    "pages/my/my",
+
     "pages/login/register",
     "pages/concel/concel",
     "pages/inquire/bayCarDetails",
     "pages/pay/pay",
     "pages/pay_success/pay_success",
+    "pages/pay_success/pay_defeated",
     "pages/account/account",
     "pages/alter_phone/alter_phone",
-    "pages/my_yy/my_yy",
+
     "pages/my_xc/my_xc",
     "pages/alter_password/alter_password",
     "pages/alter_password/new_password",
@@ -26,7 +30,8 @@
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh":"true"
   },
   "tabBar": {
     "backgroundColor": "white",

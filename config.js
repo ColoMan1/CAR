@@ -59,6 +59,16 @@ var config = {
   queryTrip: `https://${host}/order/getOrder`,
   //图片上传给服务器
   uploadImage: `https://${host}/file/file`,
+  //用户详情
+  userDetail: `https://${host}/user/getId`,
+  //修改用户信息
+  userUpdate: `https://${host}/user/updateUser`,
+  //用户退绑
+  unbundling: `https://${host}/user/unbundling`,
+  //修改账户手机号
+  alertPhone: `https://${host}/user/alertPhone`,
+  //修改账户密码
+  alertPassword: `https://${host}/user/alertPassword`,
 };
 
 module.exports = config

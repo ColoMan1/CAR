@@ -27,8 +27,9 @@
 <view class="pay_time">将于{{bayCarTime}}  {{classDataShow}}发车</view>
 
 <view class="page__bd page__bd_spacing" style="padding:180rpx 30rpx 0;text-align:center;">
-  <navigator url="../pay_success/pay_success?time={{time}}">
+  <!-- <navigator url="../pay_success/pay_success?time={{time}}">
     <button class="weui-btn" type="primary" bindtap="affirmPay" style="background-color:#FFCE39;color:black;">确认支付</button>
-  </navigator>
+  </navigator> -->
+  <button class="weui-btn" type="primary" bindtap="affirmPay" style="background-color:#FFCE39;color:black;">确认支付</button>
   <image style="height:60rpx;width:200rpx;margin-top:30rpx;" src="../../img/wxpay.png"></image>
 </view>

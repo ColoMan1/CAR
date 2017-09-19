@@ -23,3 +23,13 @@
     </view>
   </view>  
 </navigator>
+
+
+ <view class="weui-panel__ft" style="background-color:white;" bindtap="loginOut">
+    <view class="weui-cell weui-cell_access weui-cell_link" style="">
+        <view class="weui-cell__bd">
+            退出登录
+        </view>
+    </view>
+  </view>  
+

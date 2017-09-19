@@ -1,4 +1,4 @@
-// pages/account/account.js
+const unbundling = require('../../config').unbundling;
 Page({
 
   /**
@@ -62,5 +62,28 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  loginOut:function (){
+    wx.request({
+      url: unbundling,
+      data: {
+        "weChartID": wx.getStorageSync('HPcar'),
+        "userID": wx.getStorageSync('jianzb_uid')
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/json',
+        'Cookie': 'weChartID=' + wx.getStorageSync('HPcar')
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.status){
+          wx.setStorageSync('jianzb_uid', false)
+          wx.reLaunch({  //关闭所有页面，打开到应用内的某个页面
+            url: '../login/login'
+          })
+        }
+      }
+    })
   }
 })

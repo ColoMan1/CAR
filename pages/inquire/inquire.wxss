@@ -59,7 +59,7 @@ page{
   display: flex;
 }
 .yjd{
-  background: url(../../img/bg1.png)no-repeat;
+  background:url(https://phrcztc.chnai.com/photo/wechart/bg1.png)no-repeat;
   background-size: cover;
   height: 56rpx;
   width: 136rpx;
@@ -71,7 +71,12 @@ page{
   margin-left: 30rpx;
 }
 .yfc{
-  background: url(../../img/bg3.png)no-repeat;
+     background:url(https://phrcztc.chnai.com/photo/wechart/bg3.png)no-repeat;
+}
+.wfc{
+     background:url(https://phrcztc.chnai.com/photo/wechart/green.png)no-repeat; 
+}
+.yfc,.wfc{
   background-size: cover;
   height: 56rpx;
   width: 136rpx;
@@ -82,7 +87,7 @@ page{
   float: left;
 }
 .wjd{
-  background: url(../../img/green.png)no-repeat;
+  background:url(https://phrcztc.chnai.com/photo/wechart/green.png)no-repeat;
   background-size: cover;  
   height: 56rpx;
   width: 136rpx;

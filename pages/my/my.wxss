@@ -32,7 +32,7 @@
   left:152rpx;
 }
 .renz{
-  background: url(../../img/bg1.png)no-repeat;
+  background: url(https://phrcztc.chnai.com/photo/wechart/bg1.png)no-repeat;
   background-size: cover;
   height: 56rpx;
   width: 136rpx;

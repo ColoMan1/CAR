@@ -9,7 +9,7 @@
 }
 .infor_form image{
   height:258rpx;
-  width:150rpx;
+  width:258rpx;
   float: left;
   margin:-60rpx 10rpx 0 30rpx;
 

@@ -3,7 +3,7 @@
   height: 600rpx;
   margin: 0 auto;
   margin-top: 90rpx;
-  background: url(../../img/paybg.png)no-repeat;
+  background: url(https://phrcztc.chnai.com/photo/wechart/paybg.png)no-repeat;
   background-size: cover;
 
 }
